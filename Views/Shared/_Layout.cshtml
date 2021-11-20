@@ -9,6 +9,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - Kuwadro</title>
     <link rel="stylesheet" href="~/css/style.css">
+    <link rel="stylesheet" href="~/css/profile-design.css">
+
     <link href='https://fonts.googleapis.com/css?family=Saira Semi Condensed' rel='stylesheet'>
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
 </head>
@@ -22,25 +24,47 @@
                 <div class="menu-container">
                     <ul class="menu-list">
                         <li class="menu-item home" asp-area="" asp-controller="Home" asp-action="Index">Home</li>
-                        <li class="menu-item">What's New</li>
-                        <li class="menu-item">Post your work</li>
+                        <li class="menu-item new">What's New</li>
+                        <li class="menu-item post">Post your work</li>
                     </ul>
                 </div>
                 <div class="profile-container">
-                    <img class="profile-pic" src="~/css/images/booba.png" alt=""><!--get user profile if else too-->
-                    <div class="profile-text">
-                        @if (SignInManager.IsSignedIn(User))
+                    @if (SignInManager.IsSignedIn(User))
+                    {
+                        var currentUser = await UserManager.GetUserAsync(User);
+                        if (currentUser.ProfilePicture != null)
                         {
-                            var currentUser = await UserManager.GetUserAsync(User);
-                            <span class="prof-txt">@(currentUser.UserName)</span>
-                            <i class="fas fa-caret-down"></i>
+                            <img class="profile-pic" src="~/pfp/profilePic/@currentUser.ProfilePicture" alt="">
                         }
                         else
                         {
-                            <button class="sign-up">Sign-Up</button>
+                            <img class="profile-pic" src="~/pfp/profilePic/default pfp.png" alt="">
                         }
+                    }
+                    else
+                    {
+                        <img class="profile-pic" src="~/pfp/profilePic/default pfp.png" alt="">
+                    }
 
-                    </div>
+                <div class="profile-text">
+                    @if (SignInManager.IsSignedIn(User))
+                    {
+                        var currentUser = await UserManager.GetUserAsync(User);
+                        
+                        <div class="dropdown">
+                            <span class="prof-txt">@(currentUser.UserName)</span>
+                            <div class="dropdown-content">
+                                <a >Profile</a>
+                                <a href="../Login/Login.html">Logout</a>
+                            </div>
+                        </div>
+                    }
+                    else
+                    {
+                        <button class="sign-up">Sign-Up</button>
+                    }
+
+                </div>
                     <div class="toggle">
                         <i class="fas fa-moon toggle-icon"></i>
                         <i class="fas fa-sun toggle-icon"></i>

@@ -14,16 +14,30 @@
 <body>
     <div class=container>
         <div class="profile">
-
+           
             <div class="profile-content">
-                <img class="profile-picture" src="images/WhoTao.png">
                 @{var currentUser = await UserManager.GetUserAsync(User);
-                <p class="profile-name">@(currentUser.UserName)</p>
-                <div class="profile-line"></div>
-                <p class="profile-rating">5.0</p>
-                <p class="profile-about">"People die if they are killed"</p>
-              }</div>
-        </div>
+                    if (currentUser.ProfilePicture != null)
+                    {
+                        <img class="profile-picture" src="@currentUser.ProfilePicture">
+                    }
+                    else
+                    {
+                        <img class="profile-picture" src="~/pfp/profilePic/default pfp.png">
+                    }
+                    <p class="profile-name">@(currentUser.UserName)</p>
+                    if (currentUser.Bio != null)
+                    {
+                        <p class="profile-about">@currentUser.Bio</p>
+                    }
+                    else
+                    {
+                        <p class="profile-about"></p>
+
+                    }
+                    }
+                </div>
+            </div>
         <ul class="second-navbar-list">
             <li><a href="default.asp">Gallery</a></li>
             <li><a href="news.asp">Review</a></li>
