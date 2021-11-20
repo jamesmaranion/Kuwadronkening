@@ -15,6 +15,7 @@ namespace Kuwadro.Data
         {
 
         }
+        public DbSet<Art> artList { get; set; }
 
     }
 }

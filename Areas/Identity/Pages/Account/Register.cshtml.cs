@@ -47,12 +47,12 @@ namespace Kuwadro.Areas.Identity.Pages.Account
         public class InputModel
         {
             [Required]
-            [StringLength(15, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 3)]
             [EmailAddress]
             [Display(Name = "Email")]
             public string Email { get; set; }
 
             [Required]
+            [StringLength(15, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 3)]
             [Display(Name = "UserName")]
             public string UserName { get; set; }
 

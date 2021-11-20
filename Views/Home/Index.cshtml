@@ -2,7 +2,246 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+@using Microsoft.AspNetCore.Identity
+@using Kuwadro.Models
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
+<head>
+    <title>Kuwadro-Home</title>
+</head>
+<body>
+    <div class="container-xxx">
+        <div class="content-container">
+            <div class="featured-content">
+                <div class="featured-title">
+                    <h1>Some Art</h1>
+                    <p class="feat-desc">GET THE BEST ART IN YOUR LOCATION</p>
+                    <button class="discover">Discover</button>
+                    @if (SignInManager.IsSignedIn(User))
+                    {
+                        <button class="sign-up">Upload Now!</button>
+                    }
+                    else
+                    {
+                        <button type="button" class="sign-up">Sign-Up</button>
+                    }
+
+                </div>
+            </div>
+            <div class="art-list-container">
+                <h1 class="art-list-title">FEATURED ART</h1>
+                <div class="art-list-wrapper">
+                    <div class="art-list">
+                        <div class="art-list-item">
+                            <img class="art-list-item-img" src="~/css/images/img-2.jpg" alt="">
+                            <span class="art-list-item-title">This art</span>
+                            <button class="art-list-item-btn">View More</button>
+                        </div>
+                        <div class="art-list-item">
+                            <img class="art-list-item-img" src="~/css/images/img-3.jpg" alt="">
+                            <span class="art-list-item-title">This art</span>
+                            <button class="art-list-item-btn">View More</button>
+                        </div>
+                        <div class="art-list-item">
+                            <img class="art-list-item-img" src="~/css/images/img-4.jpg" alt="">
+                            <span class="art-list-item-title">This art</span>
+                            <button class="art-list-item-btn">View More</button>
+                        </div>
+                        <div class="art-list-item">
+                            <img class="art-list-item-img" src="~/css/images/img-5.jpg" alt="">
+                            <span class="art-list-item-title">This art</span>
+                            <button class="art-list-item-btn">View More</button>
+                        </div>
+                        <div class="art-list-item">
+                            <img class="art-list-item-img" src="~/css/images/img-6.jpg" alt="">
+                            <span class="art-list-item-title">This art</span>
+                            <button class="art-list-item-btn">View More</button>
+                        </div>
+                        <div class="art-list-item">
+                            <img class="art-list-item-img" src="~/css/images/img-7.jpg" alt="">
+                            <span class="art-list-item-title">This art</span>
+                            <button class="art-list-item-btn">View More</button>
+                        </div>
+                        <div class="art-list-item">
+                            <img class="art-list-item-img" src="~/css/images/img-8.jpg" alt="">
+                            <span class="art-list-item-title">This art</span>
+                            <button class="art-list-item-btn">View More</button>
+                        </div>
+                        <div class="art-list-item">
+                            <img class="art-list-item-img" src="~/css/images/img-9.jpg" alt="">
+                            <span class="art-list-item-title">This art</span>
+                            <button class="art-list-item-btn">View More</button>
+                        </div>
+                        <div class="art-list-item">
+                            <img class="art-list-item-img" src="~/css/images/Logo.png" alt="">
+                            <span class="art-list-item-title">This art</span>
+                            <button class="art-list-item-btn">View More</button>
+                        </div>
+                    </div>
+                    <i class="fas fa-chevron-right arrow" id="right-arrow"></i>
+                </div>
+            </div>
+            <div class="art-list-container">
+                <h1 class="art-list-title">RECOMMENDED ART</h1>
+                <div class="art-list-wrapper">
+                    <div class="art-list">
+                        <div class="art-list-item">
+                            <img class="art-list-item-img" src="~/css/images/img-2.jpg" alt="">
+                            <span class="art-list-item-title">This art</span>
+                            <button class="art-list-item-btn">View More</button>
+                        </div>
+                        <div class="art-list-item">
+                            <img class="art-list-item-img" src="~/css/images/img-3.jpg" alt="">
+                            <span class="art-list-item-title">This art</span>
+                            <button class="art-list-item-btn">View More</button>
+                        </div>
+                        <div class="art-list-item">
+                            <img class="art-list-item-img" src="~/css/images/img-4.jpg" alt="">
+                            <span class="art-list-item-title">This art</span>
+                            <button class="art-list-item-btn">View More</button>
+                        </div>
+                        <div class="art-list-item">
+                            <img class="art-list-item-img" src="~/css/images/img-5.jpg" alt="">
+                            <span class="art-list-item-title">This art</span>
+                            <button class="art-list-item-btn">View More</button>
+                        </div>
+                        <div class="art-list-item">
+                            <img class="art-list-item-img" src="~/css/images/img-6.jpg" alt="">
+                            <span class="art-list-item-title">This art</span>
+                            <button class="art-list-item-btn">View More</button>
+                        </div>
+                        <div class="art-list-item">
+                            <img class="art-list-item-img" src="~/css/images/img-7.jpg" alt="">
+                            <span class="art-list-item-title">This art</span>
+                            <button class="art-list-item-btn">View More</button>
+                        </div>
+                        <div class="art-list-item">
+                            <img class="art-list-item-img" src="~/css/images/img-8.jpg" alt="">
+                            <span class="art-list-item-title">This art</span>
+                            <button class="art-list-item-btn">View More</button>
+                        </div>
+                        <div class="art-list-item">
+                            <img class="art-list-item-img" src="~/css/images/img-9.jpg" alt="">
+                            <span class="art-list-item-title">This art</span>
+                            <button class="art-list-item-btn">View More</button>
+                        </div>
+                        <div class="art-list-item">
+                            <img class="art-list-item-img" src="~/css/images/Logo.png" alt="">
+                            <span class="art-list-item-title">This art</span>
+                            <button class="art-list-item-btn">View More</button>
+                        </div>
+                    </div>
+                    <i class="fas fa-chevron-right arrow" id="right-arrow"></i>
+                </div>
+            </div>
+            <div class="art-list-container">
+                <h1 class="art-list-title">POPULAR ART</h1>
+                <div class="art-list-wrapper">
+                    <div class="art-list">
+                        <div class="art-list-item">
+                            <img class="art-list-item-img" src="~/css/images/img-2.jpg" alt="">
+                            <span class="art-list-item-title">This art</span>
+                            <button class="art-list-item-btn">View More</button>
+                        </div>
+                        <div class="art-list-item">
+                            <img class="art-list-item-img" src="~/css/images/img-3.jpg" alt="">
+                            <span class="art-list-item-title">This art</span>
+                            <button class="art-list-item-btn">View More</button>
+                        </div>
+                        <div class="art-list-item">
+                            <img class="art-list-item-img" src="~/css/images/img-4.jpg" alt="">
+                            <span class="art-list-item-title">This art</span>
+                            <button class="art-list-item-btn">View More</button>
+                        </div>
+                        <div class="art-list-item">
+                            <img class="art-list-item-img" src="~/css/images/img-5.jpg" alt="">
+                            <span class="art-list-item-title">This art</span>
+                            <button class="art-list-item-btn">View More</button>
+                        </div>
+                        <div class="art-list-item">
+                            <img class="art-list-item-img" src="~/css/images/img-6.jpg" alt="">
+                            <span class="art-list-item-title">This art</span>
+                            <button class="art-list-item-btn">View More</button>
+                        </div>
+                        <div class="art-list-item">
+                            <img class="art-list-item-img" src="~/css/images/img-7.jpg" alt="">
+                            <span class="art-list-item-title">This art</span>
+                            <button class="art-list-item-btn">View More</button>
+                        </div>
+                        <div class="art-list-item">
+                            <img class="art-list-item-img" src="~/css/images/img-8.jpg" alt="">
+                            <span class="art-list-item-title">This art</span>
+                            <button class="art-list-item-btn">View More</button>
+                        </div>
+                        <div class="art-list-item">
+                            <img class="art-list-item-img" src="~/css/images/img-9.jpg" alt="">
+                            <span class="art-list-item-title">This art</span>
+                            <button class="art-list-item-btn">View More</button>
+                        </div>
+                        <div class="art-list-item">
+                            <img class="art-list-item-img" src="~/css/images/Logo.png" alt="">
+                            <span class="art-list-item-title">This art</span>
+                            <button class="art-list-item-btn">View More</button>
+                        </div>
+                    </div>
+                    <i class="fas fa-chevron-right arrow" id="right-arrow"></i>
+                </div>
+            </div>
+            <div class="art-list-container">
+                <h1 class="art-list-title">DISCOVER ARTISTS</h1>
+                <div class="art-list-wrapper">
+                    <div class="art-list">
+                        <div class="art-list-item">
+                            <img class="art-list-item-img" src="~/css/images/img-2.jpg" alt="">
+                            <span class="art-list-item-title">This art</span>
+                            <button class="art-list-item-btn">View More</button>
+                        </div>
+                        <div class="art-list-item">
+                            <img class="art-list-item-img" src="~/css/images/img-3.jpg" alt="">
+                            <span class="art-list-item-title">This art</span>
+                            <button class="art-list-item-btn">View More</button>
+                        </div>
+                        <div class="art-list-item">
+                            <img class="art-list-item-img" src="~/css/images/img-4.jpg" alt="">
+                            <span class="art-list-item-title">This art</span>
+                            <button class="art-list-item-btn">View More</button>
+                        </div>
+                        <div class="art-list-item">
+                            <img class="art-list-item-img" src="~/css/images/img-5.jpg" alt="">
+                            <span class="art-list-item-title">This art</span>
+                            <button class="art-list-item-btn">View More</button>
+                        </div>
+                        <div class="art-list-item">
+                            <img class="art-list-item-img" src="~/css/images/img-6.jpg" alt="">
+                            <span class="art-list-item-title">This art</span>
+                            <button class="art-list-item-btn">View More</button>
+                        </div>
+                        <div class="art-list-item">
+                            <img class="art-list-item-img" src="~/css/images/img-7.jpg" alt="">
+                            <span class="art-list-item-title">This art</span>
+                            <button class="art-list-item-btn">View More</button>
+                        </div>
+                        <div class="art-list-item">
+                            <img class="art-list-item-img" src="~/css/images/img-8.jpg" alt="">
+                            <span class="art-list-item-title">This art</span>
+                            <button class="art-list-item-btn">View More</button>
+                        </div>
+                        <div class="art-list-item">
+                            <img class="art-list-item-img" src="~/css/images/img-9.jpg" alt="">
+                            <span class="art-list-item-title">This art</span>
+                            <button class="art-list-item-btn">View More</button>
+                        </div>
+                        <div class="art-list-item">
+                            <img class="art-list-item-img" src="~/css/images/Logo.png" alt="">
+                            <span class="art-list-item-title">This art</span>
+                            <button class="art-list-item-btn">View More</button>
+                        </div>
+                    </div>
+                    <i class="fas fa-chevron-right arrow" id="right-arrow"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="~/js/style.js"></script>
+</body>
