@@ -24,26 +24,34 @@ namespace Kuwadro.Controllers
             _context = context;
         }
 
-        public IActionResult ProfilePage()
+        public async Task<IActionResult> ProfilePage()
+        {
+            return View(await _context.artList.ToListAsync());
+        }
+        public IActionResult Profile(string id)
         {
             return View();
         }
 
-        public IActionResult Create()
+        public IActionResult UploadArt()
         {
             return View();
+        }
+        public async Task<IActionResult> Indux()
+        {
+            return View(await _context.artList.ToListAsync());
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize]
-        public IActionResult Create(Art art, IFormFile Image)
+        public IActionResult UploadArt(Art art, IFormFile Image)
         {
             System.Diagnostics.Debug.WriteLine(Image);
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
             var user = _context.Users.Where(u => u.Id == userId).SingleOrDefault();
             var artwork = new Art()
             {
-                UserId = art.UserId,
+                UserId = userId,
                 Title = art.Title,
                 Image = art.Image,
                 Description = art.Description,
@@ -62,7 +70,7 @@ namespace Kuwadro.Controllers
                     {
                         Image.CopyTo(stream);
                     }
-                    art.Image = Image.FileName;
+                    artwork.Image = Image.FileName;
                 }
             }
             art.UserId = userId;
@@ -70,7 +78,7 @@ namespace Kuwadro.Controllers
             _context.artList.Add(artwork);
             _context.SaveChanges();
 
-            return RedirectToAction("Indux");
+            return RedirectToAction("ProfilePage");
         }
     }
 }
