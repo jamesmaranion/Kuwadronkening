@@ -28,19 +28,13 @@ namespace Kuwadro.Controllers
         {
             return View(await _context.artList.ToListAsync());
         }
-        public IActionResult Profile(string id)
-        {
-            return View();
-        }
+
 
         public IActionResult UploadArt()
         {
             return View();
         }
-        public async Task<IActionResult> Indux()
-        {
-            return View(await _context.artList.ToListAsync());
-        }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize]
@@ -79,6 +73,23 @@ namespace Kuwadro.Controllers
             _context.SaveChanges();
 
             return RedirectToAction("ProfilePage");
+        }
+
+
+
+     
+        public IActionResult Profile()
+        {
+            var Users = User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+            var Arts = _context.artList.Where(p => p.UserId == Users)
+                      .ToList();
+
+            var artworks = new Profile()
+            {
+                ArtList = Arts
+            };
+            return View(artworks);
         }
     }
 }

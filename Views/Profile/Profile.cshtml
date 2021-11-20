@@ -1,0 +1,55 @@
+﻿@model Kuwadro.Models.Profile
+@using Microsoft.AspNetCore.Identity
+@inject Kuwadro.Data.ApplicationDbContext _context
+@{
+    ViewData["Title"] = "Profile Page";
+}
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
+
+<head>
+    <link rel="stylesheet" href="~/css/profile-design.css" />
+</head>
+<body>
+    <div class=container>
+        <div class="profile">
+
+            <div class="profile-content">
+                <img class="profile-picture" src="images/WhoTao.png">
+                @{var currentUser = await UserManager.GetUserAsync(User);
+                <p class="profile-name">@(currentUser.UserName)</p>
+                <div class="profile-line"></div>
+                <p class="profile-rating">5.0</p>
+                <p class="profile-about">"People die if they are killed"</p>
+              }</div>
+        </div>
+        <ul class="second-navbar-list">
+            <li><a href="default.asp">Gallery</a></li>
+            <li><a href="news.asp">Review</a></li>
+            <li><a href="contact.asp">About</a></li>
+            <li><a href="about.asp">Commissions</a></li>
+        </ul>
+        <div class="Gallery">
+            @foreach (var item in Model.ArtList.OrderBy(p => p.CreationDate).ToList())
+            {
+                <div class="Pictors">
+                    <img src="~/img/ArtWorks/@(item.Image)" class="Viktor">
+                    <div class="pictoverlay pictoverlay-blur">
+                        <div class="imgtitle">@(item.Title)</div>
+                        <p class="description">@(item.Description)</p>
+                        <a href="Artwork.html" class="Open"><p class="OpenB">Open Artwork</p></a>
+                    </div>
+
+                </div>
+            }
+
+
+
+
+        </div>
+    </div>
+    <script src="Profile.js">
+    </script>
+
+</body>
