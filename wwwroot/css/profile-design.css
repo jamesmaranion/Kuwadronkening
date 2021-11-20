@@ -1,0 +1,409 @@
+*{
+    margin: 0;
+    
+}
+
+body {
+    font-family: 'Saira Semi Condensed';
+}
+
+.navbar{
+    width: 100%;
+    height: 50px;
+    background-color: #2b2b2b;
+}
+
+.navbar-container{
+    display: flex;
+    align-items: center;
+    padding: 0 50px;
+    height: 100%;
+    color: white;
+}
+
+.logo-container{
+    flex: 2;
+}
+
+.logo{
+    font-size: 30px;
+    color: beige;
+    cursor: pointer;
+}
+
+.menu-container{
+    flex: 5;
+}
+
+.menu-list{
+    display: flex;
+    list-style: none;
+    cursor: pointer;
+}
+
+.menu-item{
+    margin-right: 30px;
+}
+.menu-item.home{
+    font-weight: bold;
+}
+
+.profile-container{
+    flex: 2;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    cursor: pointer;
+}
+
+.profile-text{
+    margin: 0 20px;
+}
+
+.dropbtn {
+    background-color: transparent;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+  }
+  
+  .dropdown {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+  }
+  
+.optionss{
+    color:white;
+    text-decoration: none;
+}
+  .dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+  }
+  
+  .dropdown-content a:hover {background-color: #ddd;}
+
+  .dropdown:hover .dropdown-content {display: block;}
+
+.profile-pic{
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+    cursor: pointer;
+}
+
+.toggle{
+    width: 40px;
+    height: 20px;
+    background-color: white;
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    position: relative;
+}
+
+.toggle-icon{
+    color: goldenrod;
+}
+
+.toggle-ball{
+    width: 18px;
+    height: 18px;
+    background-color: #151515;
+    position: absolute;
+    right: 1px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: .5s ease all;
+}
+.container{
+background-color: #2b2b2b;
+min-height: calc(100vh - 50px);
+color: white;
+
+}
+
+
+.profile{
+    display:block;
+    height:50vh;
+    background: linear-gradient(to bottom, rgba(0,0,0,0),#2b2b2b), url("images/Background");
+    padding: 50px;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: auto;
+
+    
+}
+
+.profile-picture{
+    
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;   
+    cursor: pointer;
+    
+}
+
+.profile-content{
+    position:relative;
+    justify-content:center;
+    align-content: center;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 60px;
+    align-self: center;
+    top:20vh;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding:5px;
+    margin:50px;
+    background: none;
+
+}
+
+
+.profile-about{
+    position:absolute;
+    top:70px;
+    font-family:'Courier New', Courier, monospace;
+    font-size: 30px;
+    background: none;
+}
+
+.profile-rating{
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    background: none;
+
+}
+
+.profile-line{
+    border-left: 4px solid rgb(0, 0, 0);
+    height: 40px;
+    margin: 5px;
+    padding: 10px;
+    background: none;
+}
+
+
+.profile-picture{
+    
+    position:absolute;
+    top: -120px;
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    object-fit: cover;   
+    cursor: pointer;
+    background: none;
+    
+}
+
+.profile-name{
+    background: none;
+}
+
+
+
+.second-navbar-list{
+
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+    width: 1080;
+    display:flex;
+    flex-direction: row;
+    justify-content: center;
+
+    }
+      
+.second-navbar-list li {
+
+    
+    margin-right: 30px;
+    justify-content: center;
+    }
+      
+.second-navbar-list li a {
+
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    }
+      
+      
+.second-navbar-list li a:hover {
+        
+    background-color: rgb(77, 77, 126);    
+    text-decoration: none;
+ 
+
+}
+      
+.second-navbar-list ul p{
+        
+    font-family: 'Lobster', cursive;
+    font-size: 25px;
+    left:20px;
+    color: white;
+    position: absolute;
+    
+}
+
+.Gallery{
+    margin-left:10%;
+    margin-right:10%;
+    display:flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    overflow:hidden;
+    justify-content: center;
+   
+
+}
+
+.Pictors{
+    position: relative;
+    width: 33.33%;
+    height: 33.33%;
+    margin: 20px;
+    display: flex;
+    justify-content: 0;
+}
+
+.Viktor{
+    max-width: 100%;
+    display: block;
+    height: 100%;
+    left: 0px;
+    right: 0px;
+    margin: 20px;
+}
+
+
+
+
+
+ .pictoverlay{
+     position: absolute;
+     top: 0;
+     left: 0;
+     width: 100%;
+     height: 100%;
+     background: rgba(0, 0, 0, 0.6);
+     color: white;
+     display: flex;
+     background-color:transparent;
+     font-family: 'Quicksand', sans-serif;
+     flex-direction: column;
+     align-items: center;
+     justify-content: center;
+     opacity:0;
+
+ }
+
+ .pictoverlay > *{
+     transform: translateY(20px);
+     transition: transform 0.25s;
+ }
+ .pictoverlay:hover{
+     opacity:1;
+     transition: opacity 0.25s;
+ }
+
+ .pictoverlay:hover > *{
+     transform:translateY(0);
+     
+ }
+
+ .pictoverlay-blur{
+     backdrop-filter: blur(5px);
+ }
+
+ .imgtitle{
+     font-size: 2em;
+     font-weight:bold;
+     background: none;
+ }
+
+ .description{
+     font-size: 1.25em;
+     background: none;
+ }
+
+ .Open{
+     border: 10px solid rgb(77, 77, 126);
+     border-radius: 10px;
+     background-color: rgb(77, 77, 126);
+ }
+
+.OpenB{
+    position:relative;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 20px;
+    color: white;
+    background: none;
+}
+
+
+.logo.active{
+    color: black;
+}
+
+.navbar-container.active{
+    background-color: beige;
+    color: black;
+}
+
+.second-navbar-list.active{
+    background-color: rgb(161, 161, 144);
+
+}
+
+.Gallery.active{
+    background-color: beige;
+}
+
+.navbar-container.active li a:hover{
+    background-color: rgb(241, 241, 180);
+    color: black;
+}
+
+.container.active{
+    background-color: beige;
+}
+
+.toggle-ball.active{
+    background-color: beige;
+    transform: translateX(-20px);
+}
+
+.optionss.active{
+    background-color:transparent;
+    color: black;
+}
+
+.dropbtn.active{
+    color: black;
+    background-color: transparent;
+}

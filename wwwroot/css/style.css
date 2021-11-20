@@ -1,0 +1,419 @@
+*{
+    margin: 0;
+    font-family: 'Saira Semi Condensed';
+}
+
+body {
+    font-family: 'Saira Semi Condensed';
+}
+
+/* Navbar */
+.navbar-xxx{
+    width: 100%;
+    height: 50px;
+    background-color: #141414;
+}
+
+.navbar-container{
+    display: flex;
+    align-items: center;
+    padding: 0 50px;
+    height: 100%;
+    color: white;
+}
+
+.logo-container{
+    flex: 2;
+}
+
+.logo{
+    font-size: 30px;
+    color: beige;
+    cursor: pointer;
+}
+
+.menu-container{
+    flex: 5;
+}
+
+.menu-list{
+    display: flex;
+    list-style: none;
+    cursor: pointer;
+}
+
+.menu-item{
+    margin-right: 30px;
+}
+.menu-item.home{
+    font-weight: bold;
+}
+
+.profile-container{
+    flex: 2;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    cursor: pointer;
+}
+
+.profile-text{
+    margin: 0 20px;
+}
+
+.profile-pic{
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+    cursor: pointer;
+}
+
+.toggle{
+    width: 40px;
+    height: 20px;
+    background-color: white;
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    position: relative;
+}
+
+.toggle-icon{
+    color: goldenrod;
+}
+
+.toggle-ball{
+    width: 18px;
+    height: 18px;
+    background-color: #151515;
+    position: absolute;
+    right: 1px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: .5s ease all;
+}
+/* Home start */
+.container-xxx{
+    background-color: #2b2b2b;
+    min-height: calc(100vh - 50px);
+    color: white;
+}
+
+.content-container{
+    margin-left: 0;/*can be 100px+*/
+}
+
+.featured-content{
+    height: 50vh;
+    background: linear-gradient(to bottom, rgba(0,0,0,0),#2b2b2b),url(images/img-1.jpg);
+    /*might remove gradient*/
+    padding: 50px;
+    background-position: center center;
+}
+
+@keyframes slide{
+    0%{background-image: url(images/img-1.jpg);}
+    40%{background-image: url(images/img-2.jpg);}
+    80%{background-image: url(images/img-3.jpg);}
+}
+
+.featured-title{
+    width: 200px;
+    align-items: center;
+    margin-left: 45%;
+    margin-top: 10%;
+}
+
+.featured-title h1{
+    font-size: 50px;
+}
+.feat-desc{
+    width: 500px;
+    color: lightgray;
+    margin: 30px 0;
+}
+
+.discover{
+    background-color: cadetblue;
+    color: #2b2b2b;
+    padding: 10px 20px;
+    border-radius: 7px;
+    border: none;
+    outline: none;
+    font-weight: bold;
+}
+.sign-up{
+    background-color: lightcoral;
+    color: #2b2b2b;
+    padding: 10px 20px;
+    border-radius: 7px;
+    border: none;
+    outline: none;
+    font-weight: bold;
+}
+
+.discover:hover{
+    background-color: rgb(86, 144, 146);
+    cursor: pointer;
+}
+.sign-up:hover{
+    background-color: rgb(218, 114, 114);
+    cursor: pointer;
+}
+.art-list-container{
+    margin-left: 37px;
+    padding: 20px;
+}
+
+.art-list-wrapper{
+    position: relative;
+    overflow: hidden;
+}
+
+.art-list{
+    display: flex;
+    align-items: center;
+    height: 300px;
+    transform: translateX(0);
+    transition: all 1s ease-in-out;
+}
+
+.art-list-item{
+    margin-right: 30px;
+    position: relative;
+}
+
+.art-list-item:hover .art-list-item-img{
+    transform: scale(1.2);
+    margin: 0 30px;
+    opacity: 0.5;
+}
+
+.art-list-item:hover .art-list-item-title,
+.art-list-item:hover .art-list-item-btn{
+    opacity: 1;
+}
+
+.art-list-item-img{
+    width: 270px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 7px;
+    transition: all .3s ease-in-out;
+
+}
+.art-list-item-title{
+    background-color: #333;
+    padding: 0 10px;
+    font-size: 32px;
+    font-weight: bold;
+    position: absolute;
+    top: 10%;
+    left: 50px;
+    opacity: 0;
+    transition: .3s all ease-in-out;
+}
+.art-list-item-btn{
+    padding: 10px;
+    background-color: lightcoral;
+    color: black;
+    border-radius: 7px;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    position: absolute;
+    bottom: 10px;
+    left:50px;
+    opacity: 0;
+    transition: .3s all ease-in-out;
+}
+
+.art-list-item-btn:hover{
+    background-color: rgb(204, 109, 109);
+}
+
+#right-arrow{
+    font-size: 120px;
+    position: absolute;
+    top: 90px;
+    right: 0;
+    color: lightgray;
+    opacity: .5;
+    cursor: pointer;
+}
+/* Home-end */
+/* Indiv-art */
+.container-zzz{
+    background-color: #2b2b2b;
+    min-height: calc(100vh - 50px);
+    color: white;
+}
+
+.indiv-art{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+.art-info{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.art-desc{
+    margin-left: 50px;
+    margin-top: none;
+}
+.title{
+    margin-top: 10px;
+}
+.author{
+    margin-top: 10px;
+}
+.desc{
+    margin-top: 20px;
+    width: 400px;
+    justify-content: center;
+    text-align: justify;
+}
+
+.posted-art{
+    width: 900px;
+    height: 700px;
+    object-fit: cover;
+}
+/* Indiv-art end */
+/* About-us */
+.container-about{
+    text-align: center;
+    background: #f5f5f5;
+}
+
+.header{
+    padding-top: 60px;
+    color: #444;
+    font-size: 20px;
+    margin: auto;
+    line-height: 50px;
+}
+
+.dev-container{
+    max-width: 1200px;
+    margin: auto;
+    padding: 48px 0;
+    flex-wrap: wrap;
+    display: flex;
+    justify-content: center;
+}
+.teams{
+    margin: 10px;
+    padding: 22px;
+    max-width: 20%;
+    cursor: pointer;
+    transition: 0.4;
+    box-sizing: border-box;
+}
+.teams:hover{
+    background: #ddd;
+    border-radius: 12px;
+}
+
+.teams img{
+    height: 200px;
+    width: 200px;
+    border-radius: 100px;
+}
+
+.name{
+    padding: 12px;
+    font-weight: bold;
+    font-size: 16px;
+    text-transform: uppercase;
+}
+.role{
+    font-style: italic;
+    color: #888;
+}
+.about{
+    margin: 20px 0;
+    font-weight: lighter;
+    color: #4e4e4e;
+}
+.socmed{
+    margin: 14px;
+}
+.socmed a{
+    display: inline-block;
+    height: 30px;
+    width: 30px;
+    transition: .4s;
+}
+
+.socmed a i{
+    color: #444;
+}
+
+.socmed a:hover{
+    transform: scale(1.5);
+}
+.about-us{
+    margin-left: 10%;
+    margin-right: 10%;
+    padding: 5%;
+    align-items: center;
+    justify-content: center;
+}
+.about-us p{
+    text-align: justify;
+    font-size: 22px;
+    line-height: 50px;
+}
+
+/*light mode toggle*/
+.container-xxx.active{
+    background-color: beige;
+}
+
+.art-list-title.active{
+    color: black;
+}
+.navbar-container.active{
+    background-color: rgb(223, 223, 203);
+    color: black;
+}
+
+.logo.active{
+    color: black;
+}
+
+.toggle.active{
+    background-color: #151515;
+}
+
+.toggle-ball.active{
+    background-color: beige;
+    transform: translateX(-20px);
+}
+
+body.active{
+    background-color: beige;
+
+}
+.container-zzz.active{
+    background-color: beige;
+}
+.container-about.active{
+    background: #f5f5f5;
+
+}
+
+@media only screen and (max-width: 940px){
+    .menu-container{
+        display: none;
+    }
+}
