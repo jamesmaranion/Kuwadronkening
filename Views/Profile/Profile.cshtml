@@ -58,7 +58,7 @@
                     <div class="pictoverlay pictoverlay-blur">
                         <div class="imgtitle">@(item.Title)</div>
                         <p class="description">@(item.Description)</p>
-                        <a href="Artwork.html" class="Open"><p class="OpenB">Open Artwork</p></a>
+                        <a href="@Url.ActionLink("Artwork", "Profile", new { id = @item.Id }) " class="Open"><p class="OpenB">Open Artwork</p></a>
                     </div>
 
                 </div>
