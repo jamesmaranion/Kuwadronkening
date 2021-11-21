@@ -74,10 +74,45 @@ namespace Kuwadro.Controllers
 
             return RedirectToAction("ProfilePage");
         }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        [Authorize]
+        public IActionResult UploadProfile(ApplicationUser profile, IFormFile Image)
+        {
+            System.Diagnostics.Debug.WriteLine(Image);
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var user = _context.Users.Where(u => u.Id == userId).SingleOrDefault();
+            var prof = new ApplicationUser()
+            {
+                ProfilePicture = profile.ProfilePicture,
+                //Background = profile.Background,
+                //Bio = profile.Bio,
+            };
 
+            if (Image != null)
+            {
+                if (Image.Length > 0)
+                {
+                    string filePath = Path.Combine(Directory.GetCurrentDirectory(),
+                        "wwwroot/pfp/profilePic", Image.FileName);
 
+                    using (var stream = new FileStream(filePath, FileMode.Create))
+                    {
+                        Image.CopyTo(stream);
+                    }
+                    prof.ProfilePicture = Image.FileName;
+                }
+            }
+        
+            _context.Add(prof);
+            _context.SaveChanges();
+            return RedirectToAction("ProfilePage");
+        }
+        public IActionResult EditProfile()
+        {
+            return View();
+        }
 
-     
         public IActionResult Profile()
         {
             var Users = User.FindFirstValue(ClaimTypes.NameIdentifier);

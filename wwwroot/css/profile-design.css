@@ -200,6 +200,36 @@ color: white;
     padding: 10px;
     background: none;
 }
+.profile-picture {
+    position: absolute;
+    top: -120px;
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    object-fit: cover;
+    cursor: pointer;
+    background: none;
+}
+
+.Prof-pic {
+    position: absolute;
+    top: -120px;
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    background-color: transparent;
+    object-fit: cover;
+    cursor: pointer;
+    opacity: 0;
+}
+
+    .Prof-pic .imglink {
+        margin-top: 5px;
+    }
+
+.profile-name {
+    background: none;
+}
 
 
 .profile-picture{
@@ -219,7 +249,41 @@ color: white;
     background: none;
 }
 
+.pictoverlay > * {
+    transform: translateY(20px);
+    transition: transform 0.25s;
+}
 
+.Prof-pic > * {
+    transform: translateY(20px);
+    transition: transform 0.25s;
+}
+
+.pictoverlay:hover {
+    opacity: 1;
+    transition: opacity 0.25s;
+}
+
+.Prof-pic:hover {
+    opacity: 1;
+    transition: opacity 0.25s;
+}
+
+    .Prof-pic:hover > * {
+        transform: translateY(0);
+
+    }
+
+.pictoverlay-blur {
+    backdrop-filter: blur(5px);
+}
+
+.imglink {
+    font-size: 15px;
+    background: none;
+    text-decoration: none;
+    color: black;
+}
 
 .second-navbar-list{
 
