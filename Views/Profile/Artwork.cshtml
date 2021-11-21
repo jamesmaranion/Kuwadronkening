@@ -1,0 +1,39 @@
+﻿@model Kuwadro.Models.Art
+
+@{
+    ViewData["Title"] = "Artwork";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<head>
+    <link rel="stylesheet" href="~/css/style.css" />
+</head>
+
+<div>
+
+</div>
+<div class="container-xxx">
+    <div class="indiv-art">
+        <div class="art-info">
+            <div class="imgBox">
+                <img src="~/img/ArtWorks/@(Model.Image)" class="posted-art">
+            </div>
+            <div class="art-desc">
+                <h2 class="title">@(Model.Title)</h2>
+                <h3 class="author">By: @(Model.User)</h3>
+
+                <div class="tags">
+                    <span class="badge rounded-pill bg-primary">@Model.Genre</span>
+                </div>
+                <!-- Bootstrap the tags thx -->
+                <div class="desc">
+                    <p>
+                        @(Model.Description)
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<script src="indiv.js"></script>

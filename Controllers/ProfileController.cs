@@ -91,5 +91,15 @@ namespace Kuwadro.Controllers
             };
             return View(artworks);
         }
+
+        public IActionResult Artwork(int id)
+        {
+            var Arts = _context.artList.Where(p => p.Id == id)
+                .FirstOrDefault();
+            
+            
+            return View(Arts);
+        }
+
     }
 }

@@ -343,7 +343,7 @@ body {
     padding: 22px;
     max-width: 20%;
     cursor: pointer;
-    transition: 0.4;
+    transition: 0.4s;
     box-sizing: border-box;
 }
 .teams:hover{

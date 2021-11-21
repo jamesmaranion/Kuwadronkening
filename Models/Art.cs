@@ -18,6 +18,9 @@ namespace Kuwadro.Models
         public virtual ApplicationUser User { get; set; }
 
         public string UserId { get; set; }
+
+
+
         public string Genre { get; set; }
     }
 }
