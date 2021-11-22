@@ -19,11 +19,17 @@
                 @{var currentUser = await UserManager.GetUserAsync(User);
                     if (currentUser.ProfilePicture != null)
                     {
-                        <img class="profile-picture" src="@currentUser.ProfilePicture">
+                        <img class="profile-picture" src="~pfp/profilePic/@currentUser.ProfilePicture">
+                        <div class="Prof-pic pictoverlay-blur">
+                            <a asp-action="EditProfile" class="imglink">Edit Profile</a>
+                        </div>
                     }
                     else
                     {
                         <img class="profile-picture" src="~/pfp/profilePic/default pfp.png">
+                        <div class="Prof-pic pictoverlay-blur">
+                            <a asp-action="EditProfile" class="imglink">Edit Profile</a>
+                        </div>
                     }
                     <p class="profile-name">@(currentUser.UserName)</p>
                     if (currentUser.Bio != null)
@@ -35,8 +41,8 @@
                         <p class="profile-about"></p>
 
                     }
-                    }
-                </div>
+                }
+            </div>
             </div>
         <ul class="second-navbar-list">
             <li><a href="default.asp">Gallery</a></li>
