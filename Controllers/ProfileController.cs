@@ -126,11 +126,7 @@ namespace Kuwadro.Controllers
                     prof.Background = Background.FileName;
                 }
             }
-
-
-             
-            
-            _context.Users.Update(prof);
+            _context.Users.Update(user);
             _context.SaveChanges();
             return RedirectToAction("ProfilePage");
         }
