@@ -44,10 +44,18 @@ body {
 
 .menu-item{
     margin-right: 30px;
+    font-weight:normal;
 }
-.menu-item.home{
+.menu-item.home:hover{
     font-weight: bold;
 }
+.menu-item.new:hover{
+    font-weight: bold;
+}
+.menu-item.post:hover{
+    font-weight: bold;
+}
+
 
 .profile-container{
     flex: 2;
@@ -97,31 +105,28 @@ body {
 .dropdown {
     position: relative;
     display: inline-block;
-}
-
-.dropdown-content {
+  }
+  
+  .dropdown-content {
     display: none;
     position: absolute;
     background-color: #f1f1f1;
     min-width: 160px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    padding: 12px 16px;
     z-index: 1;
-}
-.dropdown-content a {
+  }
+  
+  .dropdown-content a {
     color: black;
     padding: 12px 16px;
     text-decoration: none;
     display: block;
-}
+  }
+  
+  .dropdown-content a:hover {background-color: #ddd;}
 
-.dropdown-content a:hover {
-   background-color: #ddd;
-}
-
-.dropdown:hover .dropdown-content {
-    display: block;
-}
-
+  .dropdown:hover .dropdown-content {display: block;}
 /* Home start */
 .container-xxx{
     background-color: #2b2b2b;
@@ -343,7 +348,7 @@ body {
     padding: 22px;
     max-width: 20%;
     cursor: pointer;
-    transition: 0.4s;
+    transition: 0.4;
     box-sizing: border-box;
 }
 .teams:hover{
@@ -401,8 +406,31 @@ body {
     font-size: 22px;
     line-height: 50px;
 }
+/* Edit Profile/Upload Art */
+.upload-container{
+    margin-left: 45%;
+}
+.upload-form{
+    padding-top: 20%;
+}
+.save, .upload{
+    margin-top: 30px;
+    color: black;
+    width: 150px;
+    padding: 12px;
+    text-align: center;
+    border-radius: 20px;
+    border: none;
+    background-color: #7AC9F5;
+}
+.save, .upload:hover{
+    background-color: #70b8df;
+}
 
 /*light mode toggle*/
+label.active{
+    color: black;
+}
 .container-xxx.active{
     background-color: beige;
 }

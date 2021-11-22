@@ -125,7 +125,10 @@ namespace Kuwadro.Controllers
                     user.Background = Background.FileName;
                 }
             }
+<<<<<<< HEAD
             
+=======
+>>>>>>> e0af4e0fe3d041cd60c73c94cd6821cbed125dc7
             _context.Users.Update(user);
             _context.SaveChanges();
             return RedirectToAction("Profile");
