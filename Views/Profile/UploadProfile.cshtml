@@ -10,17 +10,17 @@
             <div class="upload-form">
                 <form asp-action="UploadProfile" enctype="multipart/form-data">
                     <div class="input-container">
-                        <label asp-for="ProfilePicture">Upload Artwork</label><br>
+                        <label asp-for="ProfilePicture">Change Profile Pic</label><br>
                         <input asp-for="ProfilePicture" type="file" accept="image/*" />
                         <span asp-validation-for="ProfilePicture" class="text-danger"></span>
                     </div><br>
                     <div class="input-container">
-                        <label asp-for="Background">Title</label><br>
+                        <label asp-for="Background">Change Cover Pic</label><br>
                         <input asp-for="Background" type="file" accept="image/*" />
                         <span asp-validation-for="Background" class="text-danger"></span>
                     </div><br>
                     <div class="input-container">
-                        <label asp-for="Bio">Description</label><br>
+                        <label asp-for="Bio">Change Bio/Status</label><br>
                         <input asp-for="Bio" type="text" />
                         <span asp-validation-for="Bio" class="text-danger"></span>
                     </div><br>
