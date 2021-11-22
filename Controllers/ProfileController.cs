@@ -129,7 +129,7 @@ namespace Kuwadro.Controllers
 
         public IActionResult Artwork(int id)
         {
-            var Arts = _context.artList.Where(p => p.Id == id)
+            var Arts = _context.artList.Include(p => p.User).Where(p => p.Id == id)
                 .FirstOrDefault();
             
             
