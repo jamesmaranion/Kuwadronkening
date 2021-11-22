@@ -90,12 +90,11 @@ namespace Kuwadro.Controllers
             System.Diagnostics.Debug.WriteLine(Background);
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
             var user = _context.Users.Where(u => u.Id == userId).SingleOrDefault();
-            var prof = new ApplicationUser()
-            {
-                ProfilePicture = profile.ProfilePicture,
-                Background = profile.Background,
-                Bio = profile.Bio,
-            };
+
+            user.ProfilePicture = profile.Background;
+            user.Background = profile.Background;
+            user.Bio = profile.Bio;
+            
 
             if (ProfilePicture != null)
             {
@@ -108,7 +107,7 @@ namespace Kuwadro.Controllers
                     {
                         ProfilePicture.CopyTo(stream);
                     }
-                    prof.ProfilePicture = ProfilePicture.FileName;
+                    user.ProfilePicture = ProfilePicture.FileName;
                 }
             }
 
@@ -123,16 +122,13 @@ namespace Kuwadro.Controllers
                     {
                         Background.CopyTo(stream);
                     }
-                    prof.Background = Background.FileName;
+                    user.Background = Background.FileName;
                 }
             }
-
-
-             
             
-            _context.Users.Update(prof);
+            _context.Users.Update(user);
             _context.SaveChanges();
-            return RedirectToAction("ProfilePage");
+            return RedirectToAction("Profile");
         }
         public IActionResult EditProfile()
         {
