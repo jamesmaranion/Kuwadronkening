@@ -142,13 +142,11 @@ color: white;
 .profile{
     display:block;
     height:50vh;
-    background: linear-gradient(to bottom, rgba(0,0,0,0),#2b2b2b), url("images/Background");
     padding: 50px;
+    background:url(../pfp/coverPic/gojo.gif);
     background-position: center center;
     background-repeat: no-repeat;
     background-size: auto;
-
-    
 }
 
 .profile-picture{

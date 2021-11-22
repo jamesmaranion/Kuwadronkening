@@ -14,41 +14,44 @@
     <head>
         <link rel="stylesheet" href="~/css/style.css" />
     </head>
-<body>
-    <div class="container-zzz">
-        <div class="upload-container">
-            <div class="upload-form">
-                <form asp-action="UploadArt" enctype="multipart/form-data">
-                    <div class="input-container">
-                        <label asp-for="Image">Upload Artwork</label><br>
-                        <input asp-for="Image" class="form-control" type="file" accept="image/*" />
-                        <span asp-validation-for="Image" class="text-danger"></span>
-                    </div><br>
-                    <div class="input-container">
-                        <label asp-for="Title">Title</label><br>
-                        <input asp-for="Title" type="text" />
-                        <span asp-validation-for="Title" class="text-danger"></span>
-                    </div><br>
-                    <div class="input-container">
-                        <label asp-for="Description">Description</label><br>
-                        <input asp-for="Description" type="text" />
-                        <span asp-validation-for="Description" class="text-danger"></span>
-                    </div><br>
-                    <div class="input-container">
-                        <label asp-for="Genre">Genre</label><br>
-                        <input asp-for="Genre" type="text" />
-                        <span asp-validation-for="Genre" class="text-danger"></span>
-                    </div>
-                    <button type="submit" value="Upload" class="upload">Upload</button>
-                </form>
+    <body>
+        <div class="container-zzz">
+            <div class="upload-container">
+                <div class="upload-form">
+                    <form asp-action="UploadArt" enctype="multipart/form-data">
+                        <div class="input-container">
+                            <label asp-for="Image">Upload Artwork</label><br>
+                            <input asp-for="Image" class="form-control" type="file" accept="image/*" />
+                            <span asp-validation-for="Image" class="text-danger"></span>
+                        </div><br>
+                        <div class="input-container">
+                            <label asp-for="Title">Title</label><br>
+                            <input asp-for="Title" type="text" />
+                            <span asp-validation-for="Title" class="text-danger"></span>
+                        </div><br>
+                        <div class="input-container">
+                            <label asp-for="Description">Description</label><br>
+                            <input asp-for="Description" type="text" />
+                            <span asp-validation-for="Description" class="text-danger"></span>
+                        </div><br>
+                        <div class="input-container">
+                            <label asp-for="Genre">Genre</label><br>
+                            <input asp-for="Genre" type="text" />
+                            <span asp-validation-for="Genre" class="text-danger"></span>
+                        </div>
+                        <button type="submit" value="Upload" class="upload">Upload</button>
+                    </form>
+                </div>
             </div>
         </div>
-    </div>
-</body>
-    
+    </body>
+
 }
 else
 {
     <h1>Please Create an Account to continue</h1>
 
+}
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }

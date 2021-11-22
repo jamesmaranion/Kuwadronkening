@@ -10,40 +10,56 @@
 
 <head>
     <link rel="stylesheet" href="~/css/profile-design.css" />
-</head>
+    @*@{var thisUser = await UserManager.GetUserAsync(User);
+        if (thisUser.Background != null)
+        {
+        <style>
+            .profile {
+                display: block;
+                height: 50vh;
+                padding: 50px;
+                background: url('~/wwwroot/pfp/coverPic/thicc mage.gif');
+                background-position: center center;
+                background-repeat: no-repeat;
+                background-size: auto;
+            }
+        </style>
+        } 
+        }*@
+        </head>
 <body>
     <div class=container>
-        <div class="profile">
+        @{var currentUser = await UserManager.GetUserAsync(User);
+          
+                <div class="profile">
+                    <div class="profile-content">
+                        @if (currentUser.ProfilePicture != null)
+                        {
+                            <img class="profile-picture" src="~/pfp/profilePic/@(currentUser.ProfilePicture)">
+                            <div class="Prof-pic pictoverlay-blur">
+                                <a asp-action="EditProfile" class="imglink">Edit Profile</a>
+                            </div>
+                        }
+                        else
+                        {
+                            <img class="profile-picture" src="~/pfp/profilePic/default pfp.png">
+                            <div class="Prof-pic pictoverlay-blur">
+                                <a asp-action="UploadProfile" class="imglink">Edit Profile</a>
+                            </div>
+                        }
+                        <p class="profile-name">@(currentUser.UserName)</p>
+                        @if (currentUser.Bio != null)
+                        {
+                            <p class="profile-about">@currentUser.Bio</p>
+                        }
+                        else
+                        {
+                            <p class="profile-about"></p>
+                        }
+                    </div>
+                </div>
+            }
            
-            <div class="profile-content">
-                @{var currentUser = await UserManager.GetUserAsync(User);
-                    if (currentUser.ProfilePicture != null)
-                    {
-                        <img class="profile-picture" src="~/pfp/profilePic/@(currentUser.ProfilePicture)">
-                        <div class="Prof-pic pictoverlay-blur">
-                            <a asp-action="UploadProfile" class="imglink">Edit Profile</a>
-                        </div>
-                    }
-                    else
-                    {
-                        <img class="profile-picture" src="~/pfp/profilePic/default pfp.png">
-                        <div class="Prof-pic pictoverlay-blur">
-                            <a asp-action="UploadProfile" class="imglink">Edit Profile</a>
-                        </div>
-                    }
-                    <p class="profile-name">@(currentUser.UserName)</p>
-                    if (currentUser.Bio != null)
-                    {
-                        <p class="profile-about">@currentUser.Bio</p>
-                    }
-                    else
-                    {
-                        <p class="profile-about"></p>
-
-                    }
-                }
-            </div>
-            </div>
         <ul class="second-navbar-list">
             <li><a href="default.asp">Gallery</a></li>
             <li><a href="news.asp">Review</a></li>
@@ -60,16 +76,11 @@
                         <p class="description">@(item.Description)</p>
                         <a href="@Url.ActionLink("Artwork", "Profile", new { id = @item.Id }) " class="Open"><p class="OpenB">Open Artwork</p></a>
                     </div>
-
                 </div>
             }
-
-
-
-
         </div>
     </div>
-    <script src="Profile.js">
+    <script src="~/js/Profile.js">
     </script>
 
 </body>

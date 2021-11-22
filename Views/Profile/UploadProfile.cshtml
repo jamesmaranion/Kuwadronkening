@@ -4,39 +4,32 @@
     ViewData["Title"] = "UploadProfile";
 }
 
-<h1>Upload Profile</h1>
-
-<h4>Item</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="UploadProfile" enctype="multipart/form-data">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="ProfilePicture" class="control-label"></label>
-                <input asp-for="ProfilePicture" class="form-control" type="file" accept="image/*" />
-                <span asp-validation-for="ProfilePicture" class="text-danger"></span>
+<body>
+    <div class="container-zzz">
+        <div class="upload-container">
+            <div class="upload-form">
+                <form asp-action="UploadProfile" enctype="multipart/form-data">
+                    <div class="input-container">
+                        <label asp-for="ProfilePicture">Change Profile Pic</label><br>
+                        <input asp-for="ProfilePicture" type="file" accept="image/*" />
+                        <span asp-validation-for="ProfilePicture" class="text-danger"></span>
+                    </div><br>
+                    <div class="input-container">
+                        <label asp-for="Background">Change Cover Pic</label><br>
+                        <input asp-for="Background" type="file" accept="image/*" />
+                        <span asp-validation-for="Background" class="text-danger"></span>
+                    </div><br>
+                    <div class="input-container">
+                        <label asp-for="Bio">Change Bio/Status</label><br>
+                        <input asp-for="Bio" type="text" />
+                        <span asp-validation-for="Bio" class="text-danger"></span>
+                    </div><br>
+                    <button type="submit" value="Save" class="save">Save</button>
+                </form>
             </div>
-            <div class="form-group">
-                <label asp-for="Background" class="control-label"></label>
-                <input asp-for="Background" class="form-control" type="file" accept="image/*" />
-                <span asp-validation-for="Background" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Bio" class="control-label"></label>
-                <textarea asp-for="Bio" class="form-control"></textarea>
-                <span asp-validation-for="Bio" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="UploadProfile" class="btn btn-primary" />
-            </div>
-        </form>
+        </div>
     </div>
-</div>
-
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
+</body>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
