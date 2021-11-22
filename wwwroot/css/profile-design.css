@@ -105,6 +105,7 @@ body {
     cursor: pointer;
 }
 
+
 .toggle{
     width: 40px;
     height: 20px;
@@ -157,8 +158,10 @@ color: white;
     border-radius: 50%;
     object-fit: cover;   
     cursor: pointer;
+    position: relative;
     
 }
+
 
 .profile-content{
     position:relative;
@@ -200,38 +203,8 @@ color: white;
     padding: 10px;
     background: none;
 }
-.profile-picture {
-    position: absolute;
-    top: -120px;
-    width: 130px;
-    height: 130px;
-    border-radius: 50%;
-    object-fit: cover;
-    cursor: pointer;
-    background: none;
-}
 
-.Prof-pic {
-    position: absolute;
-    top: -120px;
-    width: 130px;
-    height: 130px;
-    border-radius: 50%;
-    background-color: transparent;
-    object-fit: cover;
-    cursor: pointer;
-    opacity: 0;
-}
-
-    .Prof-pic .imglink {
-        margin-top: 5px;
-    }
-
-.profile-name {
-    background: none;
-}
-
-
+/* THIS */
 .profile-picture{
     
     position:absolute;
@@ -244,46 +217,27 @@ color: white;
     background: none;
     
 }
+.Prof-pic{
+    position: absolute;
+    top: -120px;
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    background-color:transparent;
+
+    object-fit: cover;   
+    cursor: pointer;
+    opacity: 0;
+}
+.Prof-pic .imglink{
+    margin-top: 5px;
+}
 
 .profile-name{
     background: none;
 }
+/* to this */
 
-.pictoverlay > * {
-    transform: translateY(20px);
-    transition: transform 0.25s;
-}
-
-.Prof-pic > * {
-    transform: translateY(20px);
-    transition: transform 0.25s;
-}
-
-.pictoverlay:hover {
-    opacity: 1;
-    transition: opacity 0.25s;
-}
-
-.Prof-pic:hover {
-    opacity: 1;
-    transition: opacity 0.25s;
-}
-
-    .Prof-pic:hover > * {
-        transform: translateY(0);
-
-    }
-
-.pictoverlay-blur {
-    backdrop-filter: blur(5px);
-}
-
-.imglink {
-    font-size: 15px;
-    background: none;
-    text-decoration: none;
-    color: black;
-}
 
 .second-navbar-list{
 
@@ -364,10 +318,6 @@ color: white;
     margin: 20px;
 }
 
-
-
-
-
  .pictoverlay{
      position: absolute;
      margin: 20px;
@@ -384,23 +334,41 @@ color: white;
      opacity:0;
 
  }
-
+/* New */
  .pictoverlay > *{
      transform: translateY(20px);
      transition: transform 0.25s;
  }
+ .Prof-pic > *{
+    transform: translateY(20px);
+    transition: transform 0.25s;
+}
  .pictoverlay:hover{
      opacity:1;
      transition: opacity 0.25s;
  }
+ .Prof-pic:hover{
+    opacity:1;
+    transition: opacity 0.25s;
+}
 
- .pictoverlay:hover > *{
+.Prof-pic:hover > *{
      transform:translateY(0);
      
  }
+ .Prof-pic:hover > *{
+    transform:translateY(0);
+    
+}
 
  .pictoverlay-blur{
      backdrop-filter: blur(5px);
+ }
+ .imglink{
+     font-size: 15px;
+     background: none;
+     text-decoration: none;
+     color: black;
  }
 
  .imgtitle{
@@ -408,7 +376,7 @@ color: white;
      font-weight:bold;
      background: none;
  }
-
+/* until here */
  .description{
      font-size: 1.25em;
      background: none;
@@ -418,6 +386,7 @@ color: white;
      border: 10px solid rgb(77, 77, 126);
      border-radius: 10px;
      background-color: rgb(77, 77, 126);
+     text-decoration: none;
  }
 
 .OpenB{
@@ -426,6 +395,14 @@ color: white;
     font-size: 20px;
     color: white;
     background: none;
+    text-decoration: none;
+
+}
+
+.Open:hover{
+    border: 10px solid rgb(78, 78, 173);
+    background-color: rgb(78, 78, 173);
+
 }
 
 
