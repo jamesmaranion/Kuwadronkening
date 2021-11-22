@@ -52,6 +52,9 @@ namespace Kuwadro.Areas.Identity.Pages.Account
             [EmailAddress]
             [Display(Name = "Email")]
             public string Email { get; set; }
+            public string ProfilePicture { get; set; }
+            public string Bio { get; set; }
+            public string Background { get; set; }
 
             [Required]
             [StringLength(15, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 3)]
@@ -82,7 +85,7 @@ namespace Kuwadro.Areas.Identity.Pages.Account
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = Input.UserName, Email = Input.Email,
+                var user = new ApplicationUser { UserName = Input.UserName, Email = Input.Email, Background = "yellow", ProfilePicture = "default", Bio = "yelow",
                     EmailConfirmed = true};
 
                 var result = await _userManager.CreateAsync(user, Input.Password);

@@ -19,7 +19,7 @@
                 @{var currentUser = await UserManager.GetUserAsync(User);
                     if (currentUser.ProfilePicture != null)
                     {
-                        <img class="profile-picture" src="~pfp/profilePic/@currentUser.ProfilePicture">
+                        <img class="profile-picture" src="~/pfp/profilePic/@(currentUser.ProfilePicture)">
                         <div class="Prof-pic pictoverlay-blur">
                             <a asp-action="EditProfile" class="imglink">Edit Profile</a>
                         </div>

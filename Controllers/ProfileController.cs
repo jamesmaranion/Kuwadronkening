@@ -74,37 +74,63 @@ namespace Kuwadro.Controllers
 
             return RedirectToAction("ProfilePage");
         }
+
+        public IActionResult UploadProfile()
+        {
+
+            return View();
+        }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Authorize]
-        public IActionResult UploadProfile(ApplicationUser profile, IFormFile Image)
+ 
+        public IActionResult UploadProfile(ApplicationUser profile, IFormFile ProfilePicture, IFormFile Background)
         {
-            System.Diagnostics.Debug.WriteLine(Image);
+            System.Diagnostics.Debug.WriteLine(ProfilePicture);
+            System.Diagnostics.Debug.WriteLine(Background);
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
             var user = _context.Users.Where(u => u.Id == userId).SingleOrDefault();
             var prof = new ApplicationUser()
             {
                 ProfilePicture = profile.ProfilePicture,
-                //Background = profile.Background,
-                //Bio = profile.Bio,
+                Background = profile.Background,
+                Bio = profile.Bio,
             };
 
-            if (Image != null)
+            if (ProfilePicture != null)
             {
-                if (Image.Length > 0)
+                if (ProfilePicture.Length > 0)
                 {
                     string filePath = Path.Combine(Directory.GetCurrentDirectory(),
-                        "wwwroot/pfp/profilePic", Image.FileName);
+                        "wwwroot/pfp/profilePic", ProfilePicture.FileName);
 
                     using (var stream = new FileStream(filePath, FileMode.Create))
                     {
-                        Image.CopyTo(stream);
+                        ProfilePicture.CopyTo(stream);
                     }
-                    prof.ProfilePicture = Image.FileName;
+                    prof.ProfilePicture = ProfilePicture.FileName;
                 }
             }
-        
-            _context.Add(prof);
+
+            if (Background != null)
+            {
+                if (Background.Length > 0)
+                {
+                    string filePath = Path.Combine(Directory.GetCurrentDirectory(),
+                        "wwwroot/pfp/coverPic", Background.FileName);
+
+                    using (var stream = new FileStream(filePath, FileMode.Create))
+                    {
+                        Background.CopyTo(stream);
+                    }
+                    prof.Background = Background.FileName;
+                }
+            }
+
+
+             
+            
+            _context.Users.Update(prof);
             _context.SaveChanges();
             return RedirectToAction("ProfilePage");
         }
