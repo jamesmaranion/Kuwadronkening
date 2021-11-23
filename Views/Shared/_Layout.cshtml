@@ -1,5 +1,6 @@
 ﻿@using Microsoft.AspNetCore.Identity
 @using Kuwadro.Models
+@using Kuwadro.Areas.Identity.Pages.Account
 @inject SignInManager<ApplicationUser> SignInManager
 @inject UserManager<ApplicationUser> UserManager
 <!DOCTYPE html>
@@ -46,25 +47,25 @@
                         <img class="profile-pic" src="~/pfp/profilePic/default pfp.png" alt="">
                     }
 
-                <div class="profile-text">
-                    @if (SignInManager.IsSignedIn(User))
-                    {
-                        var currentUser = await UserManager.GetUserAsync(User);
-                        
-                        <div class="dropdown">
-                            <span class="prof-txt">@(currentUser.UserName)</span>
-                            <div class="dropdown-content">
-                                <a >Profile</a>
-                                <a href="../Login/Login.html">Logout</a>
-                            </div>
-                        </div>
-                    }
-                    else
-                    {
-                        <button class="sign-up">Sign-Up</button>
-                    }
+                    <div class="profile-text">
+                        @if (SignInManager.IsSignedIn(User))
+                        {
+                            var currentUser = await UserManager.GetUserAsync(User);
 
-                </div>
+                            <div class="dropdown">
+                                <span class="prof-txt">@(currentUser.UserName)</span>
+                                <div class="dropdown-content">
+                                    <a>Profile</a>
+                                    <a asp-action="Logout">Logout</a>
+                                </div>
+                            </div>
+                        }
+                        else
+                        {
+                            <button class="sign-up">Sign-Up</button>
+                        }
+
+                    </div>
                     <div class="toggle">
                         <i class="fas fa-moon toggle-icon"></i>
                         <i class="fas fa-sun toggle-icon"></i>
