@@ -143,12 +143,7 @@ namespace Kuwadro.Controllers
             return View();
         }
 
-        public async Task<IActionResult> Logout()
-        {
-            await _signInManager.SignOutAsync();
-
-            return RedirectToAction("Index", "Index");
-        }
+      
         public IActionResult Profile()
         {
             var Users = User.FindFirstValue(ClaimTypes.NameIdentifier);

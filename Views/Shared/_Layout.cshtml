@@ -55,7 +55,7 @@
                             <span class="prof-txt">@(currentUser.UserName)</span>
                             <div class="dropdown-content">
                                 <a>Profile</a>
-                                @Html.ActionLink("Logout", "Index", "HomeController", null, null)
+                                <a onclick="location.href='@Url.Action("Logout", "Home")'">Logout</a>
                             </div>
                         </div>
                     }
