@@ -46,6 +46,10 @@ body {
     margin-right: 30px;
     font-weight:normal;
 }
+.menu-item a{
+    text-decoration: none;
+    color: white;
+}
 .menu-item.home:hover{
     font-weight: bold;
 }
@@ -146,11 +150,6 @@ body {
     background-position: center center;
 }
 
-@keyframes slide{
-    0%{background-image: url(images/img-1.jpg);}
-    40%{background-image: url(images/img-2.jpg);}
-    80%{background-image: url(images/img-3.jpg);}
-}
 
 .featured-title{
     width: 200px;
@@ -460,12 +459,18 @@ body.active{
     background-color: beige;
 
 }
+
 .container-zzz.active{
     background-color: beige;
 }
 .container-about.active{
     background: #f5f5f5;
 
+}
+
+.menu-list.active a.active{
+    color:black;
+    background: none;
 }
 
 @media only screen and (max-width: 940px){

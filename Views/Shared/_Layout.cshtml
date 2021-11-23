@@ -24,9 +24,16 @@
                 </div>
                 <div class="menu-container">
                     <ul class="menu-list">
-                        <li class="menu-item home" asp-area="" asp-controller="Home" asp-action="Index">Home</li>
-                        <li class="menu-item new">What's New</li>
-                        <li class="menu-item post">Post your work</li>
+                        <li class="menu-item home">
+                            <a asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                        </li>
+                        <li class="menu-item new">
+                            <a>What's New</a>
+                        </li>
+                        <li class="menu-item post">
+                            <a asp-area="" asp-controller="Profile" asp-action="UploadArt">Post your work</a>
+                        </li>
+
                     </ul>
                 </div>
                 <div class="profile-container">
@@ -55,14 +62,14 @@
                         <div class="dropdown">
                             <span class="prof-txt">@(currentUser.UserName)</span>
                             <div class="dropdown-content">
-                                <a>Profile</a>
+                                <a  asp-controller="Profile" asp-action="Profile">Profile</a>
                                 <a onclick="location.href='@Url.Action("Logout", "Home")'">Logout</a>
                             </div>
                         </div>
                     }
                     else
                     {
-                        <button class="sign-up">Sign-Up</button>
+                        <button class="sign-up" onclick="location.href='Identity/Account/Register'">Sign-Up</button>
                     }
 
                     </div>

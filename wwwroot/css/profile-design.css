@@ -44,9 +44,6 @@ body {
 .menu-item{
     margin-right: 30px;
 }
-.menu-item.home{
-    font-weight: bold;
-}
 
 .profile-container{
     flex: 2;

@@ -21,11 +21,11 @@
                     <button class="discover">Discover</button>
                     @if (SignInManager.IsSignedIn(User))
                     {
-                        <button class="sign-up">Upload Now!</button>
+                        <button type="button" class="sign-up" onclick="location.href='Profile/UploadArt'">Upload Now!</button>
                     }
                     else
                     {
-                        <button type="button" class="sign-up">Sign-Up</button>
+                        <button type="button" class="sign-up"  onclick="location.href='Identity/Account/Register'">Sign-Up</button>
                     }
 
                 </div>
