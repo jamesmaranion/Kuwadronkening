@@ -80,7 +80,7 @@ namespace Kuwadro.Controllers
             _context.artList.Add(artwork);
             _context.SaveChanges();
 
-            return RedirectToAction("ProfilePage");
+            return RedirectToAction("Profile");
         }
 
         public IActionResult UploadProfile()

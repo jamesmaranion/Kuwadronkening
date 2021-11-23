@@ -43,6 +43,10 @@ namespace Kuwadro.Controllers
         {
             return View();
         }
+        public IActionResult Login()
+        {
+            return View("/Identity/Account/Login");
+        }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
