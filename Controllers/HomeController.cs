@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 using Kuwadro.Areas.Identity.Pages.Account;
 using Microsoft.AspNetCore.Authorization;
+using Kuwadro.Data;
 
 namespace Kuwadro.Controllers
 {
@@ -18,17 +19,25 @@ namespace Kuwadro.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private readonly SignInManager<ApplicationUser> _signInManager;
+        private readonly ApplicationDbContext _context;
 
-        public HomeController(ILogger<HomeController> logger, SignInManager<ApplicationUser> signInManager)
+        public HomeController(ApplicationDbContext context, ILogger<HomeController> logger, SignInManager<ApplicationUser> signInManager)
         {
+            _context = context;
             _logger = logger;
             _signInManager = signInManager;
         }
 
+
+   
         public IActionResult Index()
         {
+
             return View();
+           
         }
+        
+
 
         public IActionResult Privacy()
         {
