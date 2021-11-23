@@ -13,7 +13,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace Kuwadro.Controllers
 {
-    [Authorize]
+  
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
@@ -44,7 +44,7 @@ namespace Kuwadro.Controllers
         {
             await _signInManager.SignOutAsync();
 
-            return RedirectToAction("Index", "Index");
+            return RedirectToAction("Index", "Home");
         }
 
     }
