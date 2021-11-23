@@ -11,6 +11,9 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Hosting;
 using System.IO;
 using Kuwadro.Data;
+using Microsoft.Extensions.Logging;
+using Microsoft.AspNetCore.Identity;
+using Kuwadro.Areas.Identity.Pages.Account;
 
 namespace Kuwadro.Controllers
 {
@@ -18,10 +21,15 @@ namespace Kuwadro.Controllers
     public class ProfileController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly SignInManager<ApplicationUser>  _signInManager;
 
-        public ProfileController(ApplicationDbContext context)
+
+
+
+        public ProfileController(ApplicationDbContext context, SignInManager<ApplicationUser> signInManager)
         {
             _context = context;
+            _signInManager = signInManager;
         }
 
         public async Task<IActionResult> ProfilePage()
@@ -125,6 +133,7 @@ namespace Kuwadro.Controllers
                     user.Background = Background.FileName;
                 }
             }
+
             _context.Users.Update(user);
             _context.SaveChanges();
             return RedirectToAction("Profile");
@@ -134,6 +143,12 @@ namespace Kuwadro.Controllers
             return View();
         }
 
+        public async Task<IActionResult> Logout()
+        {
+            await _signInManager.SignOutAsync();
+
+            return RedirectToAction("Index", "Index");
+        }
         public IActionResult Profile()
         {
             var Users = User.FindFirstValue(ClaimTypes.NameIdentifier);
