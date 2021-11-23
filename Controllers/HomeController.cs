@@ -29,14 +29,32 @@ namespace Kuwadro.Controllers
         }
 
 
-   
+
         public IActionResult Index()
         {
+            var Featured = _context.artList.OrderBy(p => p.CreationDate).Where(p => p.Featured == true)
+                   .ToList();
 
-            return View();
-           
+            var Recommended = _context.artList.OrderBy(p => p.CreationDate).Where(p => p.Recommended == true)
+                    .ToList();
+            var Popular = _context.artList.OrderBy(p => p.CreationDate).Where(p => p.Popular == true)
+                   .ToList();
+            var Discover = _context.Users.OrderBy(p => p.Id)
+                   .ToList();
+
+            var artworks = new HomeArt()
+            {
+                FeaturedArt = Featured,
+                RecommendedArt = Recommended,
+                PopularArt = Popular,
+                DiscoverArtist = Discover
+
+            };
+            return View(artworks);
+
         }
-        
+
+
 
 
         public IActionResult Privacy()

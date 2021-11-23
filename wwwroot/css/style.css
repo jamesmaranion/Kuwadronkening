@@ -237,7 +237,7 @@ body {
 
 }
 .art-list-item-title{
-    background-color: #333;
+    background-color: none;
     padding: 0 10px;
     font-size: 32px;
     font-weight: bold;
@@ -262,6 +262,9 @@ body {
     transition: .3s all ease-in-out;
 }
 
+.art-list-item-btn a{
+    text-decoration:none;
+}
 .art-list-item-btn:hover{
     background-color: rgb(204, 109, 109);
 }
