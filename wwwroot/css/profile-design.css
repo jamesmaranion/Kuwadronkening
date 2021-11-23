@@ -143,10 +143,18 @@ color: white;
     display:block;
     height:50vh;
     padding: 50px;
-    background:url(../pfp/coverPic/gojo.gif);
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-size: auto;
+    
+   
+}
+
+
+.background-c {
+    top: 50px;
+    left: 0px;
+    position: absolute;
+    display: block;
+    height: 61vh;
+    width: 100%;
 }
 
 .profile-picture{
@@ -244,7 +252,7 @@ color: white;
     padding: 0;
     overflow: hidden;
     background-color: #333;
-    width: 1080;
+    width: 100%;
     display:flex;
     flex-direction: row;
     justify-content: center;
@@ -304,7 +312,8 @@ color: white;
     height: 33.33%;
     margin: 20px;
     display: flex;
-    justify-content: 0;
+    justify-content: center;
+    align-content:center;
 }
 
 .Viktor{
