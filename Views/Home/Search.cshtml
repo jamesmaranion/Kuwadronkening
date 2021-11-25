@@ -1,0 +1,13 @@
+﻿@model IEnumerable<ApplicationUser>
+
+
+@foreach (var item in Model) { 
+
+    <div>
+
+        @item.UserName
+    </div>
+    <div>
+        @item.Bio
+    </div>
+}
