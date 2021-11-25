@@ -43,6 +43,29 @@ namespace Kuwadro.Controllers
             return View();
         }
 
+        [AllowAnonymous]
+
+        public IActionResult Index(String id)
+        {
+            var User = _context.Users.Where(u => u.UserName == id).FirstOrDefault();
+
+            if (User == null)
+            {
+                return NotFound();
+            }
+
+            var Arts = _context.artList.Where(p => p.UserId == User.Id)
+                      .ToList();
+
+            var artworks = new Profile()
+            {
+                User = User,
+                ArtList = Arts
+            };
+            return View(artworks);
+        }
+
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize]
@@ -158,6 +181,8 @@ namespace Kuwadro.Controllers
             return View(artworks);
         }
 
+
+        [AllowAnonymous]
         public IActionResult Artwork(int id)
         {
             var Arts = _context.artList.Include(p => p.User).Where(p => p.Id == id)
