@@ -13,5 +13,7 @@ namespace Kuwadro.Models
         public string Background { get; set; }
 
         public string Bio { get; set; }
+
+        public string About { get; set; }
     }
 }

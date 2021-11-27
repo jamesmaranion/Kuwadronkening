@@ -40,6 +40,29 @@ namespace Kuwadro.Controllers
             return View();
         }
 
+        [AllowAnonymous]
+
+        public IActionResult Index(String id)
+        {
+            var User = _context.Users.Where(u => u.UserName == id).FirstOrDefault();
+
+            if (User == null)
+            {
+                return NotFound();
+            }
+
+            var Arts = _context.artList.Where(p => p.UserId == User.Id)
+                      .ToList();
+
+            var artworks = new Profile()
+            {
+                User = User,
+                ArtList = Arts
+            };
+            return View(artworks);
+        }
+
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize]
@@ -96,15 +119,14 @@ namespace Kuwadro.Controllers
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
             var user = _context.Users.Where(u => u.Id == userId).SingleOrDefault();
 
-            user.ProfilePicture = profile.Background;
-            user.Background = profile.Background;
-            user.Bio = profile.Bio;
             
 
             if (ProfilePicture != null)
             {
                 if (ProfilePicture.Length > 0)
                 {
+                    user.ProfilePicture = profile.Background;
+
                     string filePath = Path.Combine(Directory.GetCurrentDirectory(),
                         "wwwroot/pfp/profilePic", ProfilePicture.FileName);
 
@@ -119,7 +141,10 @@ namespace Kuwadro.Controllers
             if (Background != null)
             {
                 if (Background.Length > 0)
-                {
+                {       
+                    user.Background = profile.Background;
+
+
                     string filePath = Path.Combine(Directory.GetCurrentDirectory(),
                         "wwwroot/pfp/coverPic", Background.FileName);
 
@@ -129,6 +154,16 @@ namespace Kuwadro.Controllers
                     }
                     user.Background = Background.FileName;
                 }
+            }
+
+            if (profile.Bio != null && profile.Bio.Length > 0)
+            {
+                user.Bio = profile.Bio;
+            }
+
+            if (profile.About != null && profile.About.Length > 0)
+            {
+                user.About = profile.About;
             }
 
             _context.Users.Update(user);
@@ -155,6 +190,8 @@ namespace Kuwadro.Controllers
             return View(artworks);
         }
 
+
+        [AllowAnonymous]
         public IActionResult Artwork(int id)
         {
             var Arts = _context.artList.Include(p => p.User).Where(p => p.Id == id)
@@ -163,6 +200,14 @@ namespace Kuwadro.Controllers
             
             return View(Arts);
         }
+
+        [AllowAnonymous]
+        public IActionResult About(String id)
+        {
+            var User = _context.Users.Where(u => u.UserName == id).FirstOrDefault();
+            return User == null? NotFound(): View(User);
+        }
+
 
     }
 }

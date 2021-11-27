@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 using Kuwadro.Areas.Identity.Pages.Account;
 using Microsoft.AspNetCore.Authorization;
+using Kuwadro.Data;
 
 namespace Kuwadro.Controllers
 {
@@ -18,17 +19,49 @@ namespace Kuwadro.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private readonly SignInManager<ApplicationUser> _signInManager;
+        private readonly ApplicationDbContext _context;
 
-        public HomeController(ILogger<HomeController> logger, SignInManager<ApplicationUser> signInManager)
+        public HomeController(ApplicationDbContext context, ILogger<HomeController> logger, SignInManager<ApplicationUser> signInManager)
         {
+            _context = context;
             _logger = logger;
             _signInManager = signInManager;
         }
 
+
+
         public IActionResult Index()
         {
-            return View();
+            var Featured = _context.artList.OrderBy(p => p.CreationDate).Where(p => p.Featured == true)
+                   .ToList();
+
+            var Recommended = _context.artList.OrderBy(p => p.CreationDate).Where(p => p.Recommended == true)
+                    .ToList();
+            var Popular = _context.artList.OrderBy(p => p.CreationDate).Where(p => p.Popular == true)
+                   .ToList();
+            var Discover = _context.Users.OrderBy(p => p.Id)
+                   .ToList();
+
+            var artworks = new HomeArt()
+            {
+                FeaturedArt = Featured,
+                RecommendedArt = Recommended,
+                PopularArt = Popular,
+                DiscoverArtist = Discover
+
+            };
+            return View(artworks);
+
         }
+
+        public IActionResult Search(String q)
+        {
+            ViewData["Title"] = q;
+            return View(_context.Users.Where(u => u.UserName.Contains(q)).ToList<ApplicationUser>());
+        }
+
+
+
 
         public IActionResult Privacy()
         {

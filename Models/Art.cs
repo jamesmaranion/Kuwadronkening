@@ -22,5 +22,9 @@ namespace Kuwadro.Models
 
 
         public string Genre { get; set; }
+
+        public bool Featured { get; set; }
+        public bool Recommended { get; set; }
+        public bool Popular { get; set; }
     }
 }
