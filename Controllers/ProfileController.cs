@@ -23,9 +23,6 @@ namespace Kuwadro.Controllers
         private readonly ApplicationDbContext _context;
         private readonly SignInManager<ApplicationUser>  _signInManager;
 
-
-
-
         public ProfileController(ApplicationDbContext context, SignInManager<ApplicationUser> signInManager)
         {
             _context = context;
