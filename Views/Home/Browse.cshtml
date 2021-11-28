@@ -1,0 +1,29 @@
+﻿
+@{
+}
+
+<div class="container-xxx">
+    <div class="content-container">
+        @foreach (IGrouping<String, Art> group in Model)
+        {
+            <div class="art-list-container">
+                <h1 class="art-list-title">@group.Key</h1>
+                <div class="art-list-wrapper">
+                    <div class="art-list">
+                        @foreach (var art in group.OrderByDescending(art => art.CreationDate))
+                        {
+                            <div class="art-list-item">
+                                <img class="art-list-item-img" src="~/img/ArtWorks/@(art.Image)" alt="">
+                                <span class="art-list-item-title">@(art.Title)</span>
+                                <a href="@Url.ActionLink("Artwork", "Profile", new { id = @art.Id }) " class="art-list-item-btn"><p class="art-list-item-btn-txt">Open Artwork</p></a>
+                            </div>
+                        }
+
+                    </div>
+                    <i class="fas fa-chevron-right arrow" id="right-arrow"></i>
+                </div>
+            </div>
+        }
+        
+    </div>
+</div>

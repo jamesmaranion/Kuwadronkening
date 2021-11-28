@@ -44,6 +44,7 @@ namespace Kuwadro.Controllers
 
         public IActionResult Index(String id)
         {
+        
             var User = _context.Users.Where(u => u.UserName == id).FirstOrDefault();
 
             if (User == null)
@@ -51,8 +52,10 @@ namespace Kuwadro.Controllers
                 return NotFound();
             }
 
-            var Arts = _context.artList.Where(p => p.UserId == User.Id)
-                      .ToList();
+            var Arts = _context.artList
+                    .Where(art => art.UserId == User.Id)
+                    .OrderByDescending(art => art.CreationDate)
+                    .ToList();
 
             var artworks = new Profile()
             {
@@ -194,11 +197,14 @@ namespace Kuwadro.Controllers
         [AllowAnonymous]
         public IActionResult Artwork(int id)
         {
-            var Arts = _context.artList.Include(p => p.User).Where(p => p.Id == id)
+            var art = _context.artList.Include(p => p.User).Where(p => p.Id == id)
                 .FirstOrDefault();
+            //if id of the user that created it matches the id of the logged in user
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+            var canEdit = art.UserId == userId;
             
-            
-            return View(Arts);
+            return View(new ArtWork { Art = art, CanEdit = canEdit});
         }
 
         [AllowAnonymous]

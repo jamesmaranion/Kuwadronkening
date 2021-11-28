@@ -60,6 +60,15 @@ namespace Kuwadro.Controllers
             return View(_context.Users.Where(u => u.UserName.Contains(q)).OrderBy(u => u.UserName).ToList<ApplicationUser>());
         }
 
+        public IActionResult Browse()
+        {
+            var art = _context.artList.ToList<Art>().GroupBy(art => art.Genre);
+           
+            
+
+            //ViewData["Title"] = "Browse";
+            return View(art);
+        }
 
 
 
