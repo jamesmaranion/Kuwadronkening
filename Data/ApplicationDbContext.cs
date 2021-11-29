@@ -16,6 +16,7 @@ namespace Kuwadro.Data
 
         }
         public DbSet<Art> artList { get; set; }
+        public DbSet<Kuwadro.Models.Commission> Commission { get; set; }
 
     }
 }

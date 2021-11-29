@@ -14,6 +14,8 @@ using Kuwadro.Data;
 using Microsoft.Extensions.Logging;
 using Microsoft.AspNetCore.Identity;
 using Kuwadro.Areas.Identity.Pages.Account;
+using System.Net;
+using System.Net.Mail;
 
 namespace Kuwadro.Controllers
 {
@@ -214,6 +216,39 @@ namespace Kuwadro.Controllers
             return User == null? NotFound(): View(User);
         }
 
+        [AllowAnonymous]
+        public IActionResult Commission(String id)
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Commission(Commission record)
+        {
+
+            MailMessage mail = new MailMessage()
+            {
+                From = new MailAddress("use ur own email", "bruh")
+            };
+            mail.To.Add(record.Email);
+
+            mail.Subject = $"art request";
+            mail.Body = record.Description;
+            mail.IsBodyHtml = true;
+
+            using SmtpClient smtp = new SmtpClient("smtp.gmail.com", 587)
+            {
+                Credentials = new NetworkCredential("use ur own email", "use ur own password"),
+                EnableSsl = true
+            };
+
+            smtp.Send(mail);
+            ViewBag.Message = "Inquiry sent.";
+
+            return View();
+        }
+
+        
 
     }
 }
