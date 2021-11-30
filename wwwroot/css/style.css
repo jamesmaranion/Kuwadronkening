@@ -428,6 +428,38 @@ body {
 .save, .upload:hover{
     background-color: #70b8df;
 }
+/* ProfileSearch */
+.artist-profiles {
+    display: flex;
+    margin-left: 100px;
+    padding-top: 70px;
+}
+
+.this-card {
+    transition: 0.4s;
+    width: 300px;
+    background: #fff;
+    color: black;
+    text-align: center;
+    font-size: 16px;
+    float: left;
+    margin: 10px;
+    height: 300px;
+    border-radius: 5px;
+    border: #141414;
+}
+
+    .this-card:hover {
+        box-shadow: 0 8px 16px 0 rgba(0,0,0,0.6);
+    }
+
+    .this-card img {
+        border-radius: 5px;
+    }
+
+.card-container {
+    padding: 30px 16px;
+}
 
 /*light mode toggle*/
 label.active{

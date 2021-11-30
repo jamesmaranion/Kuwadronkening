@@ -1,26 +1,39 @@
 ﻿@model IEnumerable<ApplicationUser>
 
 
-@if (Model == null  || Model.Count() == 0)
+@if (Model == null || Model.Count() == 0)
 {
-   <div>
-       Nobody was found
-   </div>
+    <div>
+        Nobody was found.
+    </div>
 }
 
-@foreach (var item in Model) { 
+@foreach (var item in Model)
+{
+    <div class="container-zzz">
+        <div class="artist-profiles">
+            <div class="this-card">
+                <img src="css/pfp/profilePic/@item.ProfilePicture" style="width: 100%;">
+                <div class="card-container">
+                    <h4>@item.UserName</h4>
+                    <p>@item.Bio</p>
+                    <a href="@Url.ActionLink("Index", "Profile", new { id= @item.UserName })">Visit Profile</a>
+                </div>
+            </div>
 
-<div>
-    <div>
-
-        @item.UserName
+        </div>
     </div>
-    <div>
-        @item.Bio
-    </div>
-    <a href="@Url.ActionLink("Index", "Profile", new { id= @item.UserName })">View More</a>
+    @*<div>
+        <div>
 
-</div>
+            @item.UserName
+        </div>
+        <div>
+            @item.Bio
+        </div>
+        <a href="@Url.ActionLink("Index", "Profile", new { id= @item.UserName })">View More</a>
 
-   
+    </div>*@
+
+
 }
