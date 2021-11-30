@@ -1,8 +1,16 @@
 ﻿@model IEnumerable<ApplicationUser>
 
 
+@if (Model == null  || Model.Count() == 0)
+{
+   <div>
+       Nobody was found
+   </div>
+}
+
 @foreach (var item in Model) { 
 
+<div>
     <div>
 
         @item.UserName
@@ -10,4 +18,9 @@
     <div>
         @item.Bio
     </div>
+    <a href="@Url.ActionLink("Index", "Profile", new { id= @item.UserName })">View More</a>
+
+</div>
+
+   
 }

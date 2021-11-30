@@ -57,9 +57,18 @@ namespace Kuwadro.Controllers
         public IActionResult Search(String q)
         {
             ViewData["Title"] = q;
-            return View(_context.Users.Where(u => u.UserName.Contains(q)).ToList<ApplicationUser>());
+            return View(_context.Users.Where(u => u.UserName.Contains(q)).OrderBy(u => u.UserName).ToList<ApplicationUser>());
         }
 
+        public IActionResult Browse()
+        {
+            var art = _context.artList.ToList<Art>().GroupBy(art => art.Genre);
+           
+            
+
+            //ViewData["Title"] = "Browse";
+            return View(art);
+        }
 
 
 

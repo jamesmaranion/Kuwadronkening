@@ -14,6 +14,8 @@ using Kuwadro.Data;
 using Microsoft.Extensions.Logging;
 using Microsoft.AspNetCore.Identity;
 using Kuwadro.Areas.Identity.Pages.Account;
+using System.Net;
+using System.Net.Mail;
 
 namespace Kuwadro.Controllers
 {
@@ -44,6 +46,7 @@ namespace Kuwadro.Controllers
 
         public IActionResult Index(String id)
         {
+        
             var User = _context.Users.Where(u => u.UserName == id).FirstOrDefault();
 
             if (User == null)
@@ -51,8 +54,10 @@ namespace Kuwadro.Controllers
                 return NotFound();
             }
 
-            var Arts = _context.artList.Where(p => p.UserId == User.Id)
-                      .ToList();
+            var Arts = _context.artList
+                    .Where(art => art.UserId == User.Id)
+                    .OrderByDescending(art => art.CreationDate)
+                    .ToList();
 
             var artworks = new Profile()
             {
@@ -194,20 +199,56 @@ namespace Kuwadro.Controllers
         [AllowAnonymous]
         public IActionResult Artwork(int id)
         {
-            var Arts = _context.artList.Include(p => p.User).Where(p => p.Id == id)
+            var art = _context.artList.Include(p => p.User).Where(p => p.Id == id)
                 .FirstOrDefault();
+            //if id of the user that created it matches the id of the logged in user
+            //var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+            //var canEdit = art.UserId == userId;
             
-            
-            return View(Arts);
+            return View(art);
         }
 
         [AllowAnonymous]
         public IActionResult About(String id)
         {
             var User = _context.Users.Where(u => u.UserName == id).FirstOrDefault();
-            return User == null? NotFound(): View(User);
+            return User == null? NotFound(): View(new Profile { User = User});
         }
 
+        [AllowAnonymous]
+        public IActionResult Commission(String id)
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Commission(Commission record)
+        {
+
+            MailMessage mail = new MailMessage()
+            {
+                From = new MailAddress("muertosfestivel@gmail.com", "bruh")
+            };
+            mail.To.Add(record.Email);
+
+            mail.Subject = $"art request";
+            mail.Body = record.Description;
+            mail.IsBodyHtml = true;
+
+            using SmtpClient smtp = new SmtpClient("smtp.gmail.com", 587)
+            {
+                Credentials = new NetworkCredential("muertosfestivel@gmail.com", "yellow@1234"),
+                EnableSsl = true
+            };
+
+            smtp.Send(mail);
+            ViewBag.Message = "Inquiry sent.";
+
+            return View();
+        }
+
+        
 
     }
 }

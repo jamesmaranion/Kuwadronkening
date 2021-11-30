@@ -28,11 +28,18 @@
                             <a asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
                         <li class="menu-item new">
-                            <a>What's New</a>
+                            <a asp-area="" asp-controller="Home" asp-action="Browse">What's New</a>
                         </li>
                         <li class="menu-item post">
                             <a asp-area="" asp-controller="Profile" asp-action="UploadArt">Post your work</a>
                         </li>
+                        <li class="menu-item ">
+                            <form asp-controller="Home" asp-action="Search">
+                                <input type="text" name="q">
+                                <button type="submit">Search</button>
+                            </form>
+                        </li>
+
 
                     </ul>
                 </div>
