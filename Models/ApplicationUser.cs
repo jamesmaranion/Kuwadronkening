@@ -3,6 +3,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations;
+
 
 namespace Kuwadro.Models
 {
@@ -13,7 +15,7 @@ namespace Kuwadro.Models
         public string Background { get; set; }
 
         public string Bio { get; set; }
-
+        [DataType(DataType.MultilineText)]
         public string About { get; set; }
     }
 }

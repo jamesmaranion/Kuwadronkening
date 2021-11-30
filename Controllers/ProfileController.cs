@@ -213,7 +213,7 @@ namespace Kuwadro.Controllers
         public IActionResult About(String id)
         {
             var User = _context.Users.Where(u => u.UserName == id).FirstOrDefault();
-            return User == null? NotFound(): View(User);
+            return User == null? NotFound(): View(new Profile { User = User});
         }
 
         [AllowAnonymous]

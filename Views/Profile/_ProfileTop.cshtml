@@ -1,6 +1,44 @@
-﻿<ul class="second-navbar-list">
-    <li><a href="default.asp">Gallery</a></li>
-    <li><a href="news.asp">Review</a></li>
-    <li><a href="contact.asp">About</a></li>
-    <li><a href="about.asp">Commissions</a></li>
+﻿@model Kuwadro.Models.Profile
+
+@{var currentUser = Model.User;
+
+    <div class="profile">
+        @if (currentUser.Background != null)
+        {
+            <img class="background-c" src="~/pfp/coverPic/@(currentUser.Background)">
+        }
+
+        <div class="profile-content">
+
+            @if (currentUser.ProfilePicture != null)
+            {
+                <img class="profile-picture" src="~/pfp/profilePic/@(currentUser.ProfilePicture)">
+                <div class="Prof-pic pictoverlay-blur">
+                </div>
+            }
+            else
+            {
+                <img class="profile-picture" src="~/pfp/profilePic/default pfp.png">
+                <div class="Prof-pic pictoverlay-blur">
+                </div>
+            }
+            <p class="profile-name">@(currentUser.UserName)</p>
+            @if (currentUser.Bio != null)
+            {
+                <p class="profile-about">@currentUser.Bio</p>
+            }
+            else
+            {
+                <p class="profile-about">This person apparently exists</p>
+            }
+        </div>
+    </div>
+}
+
+<ul class="second-navbar-list">
+    <li><a href="@Url.ActionLink("Index", "Profile" , new { id=@Model.User.UserName })">Gallery</a></li>
+    <li><a href="">Reviews</a></li>
+
+    <li><a href="@Url.ActionLink("About", "Profile" , new { id=@Model.User.UserName })">About</a></li>
+    <li><a href="@Url.ActionLink("Commission", "Profile" , new { id=@Model.User.UserName })">Commissions</a></li>
 </ul>
