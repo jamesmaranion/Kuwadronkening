@@ -228,7 +228,7 @@ namespace Kuwadro.Controllers
 
             MailMessage mail = new MailMessage()
             {
-                From = new MailAddress("use ur own email", "bruh")
+                From = new MailAddress("muertosfestivel@gmail.com", "bruh")
             };
             mail.To.Add(record.Email);
 
@@ -238,7 +238,7 @@ namespace Kuwadro.Controllers
 
             using SmtpClient smtp = new SmtpClient("smtp.gmail.com", 587)
             {
-                Credentials = new NetworkCredential("use ur own email", "use ur own password"),
+                Credentials = new NetworkCredential("muertosfestivel@gmail.com", "yellow@1234"),
                 EnableSsl = true
             };
 
