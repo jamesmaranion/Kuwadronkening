@@ -44,7 +44,11 @@ body {
 
 .menu-item{
     margin-right: 30px;
+    font-weight:normal;
+}
+.menu-item a{
     text-decoration: none;
+    color: white;
 }
 .menu-item.home:hover{
     font-weight: bold;
@@ -146,11 +150,6 @@ body {
     background-position: center center;
 }
 
-@keyframes slide{
-    0%{background-image: url(images/img-1.jpg);}
-    40%{background-image: url(images/img-2.jpg);}
-    80%{background-image: url(images/img-3.jpg);}
-}
 
 .featured-title{
     width: 200px;
@@ -238,7 +237,7 @@ body {
 
 }
 .art-list-item-title{
-    background-color: #333;
+    background-color: none;
     padding: 0 10px;
     font-size: 32px;
     font-weight: bold;
@@ -263,6 +262,9 @@ body {
     transition: .3s all ease-in-out;
 }
 
+.art-list-item-btn a{
+    text-decoration:none;
+}
 .art-list-item-btn:hover{
     background-color: rgb(204, 109, 109);
 }
@@ -289,38 +291,19 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-  
 }
 .art-info{
     position: relative;
-    display: block;
-    width: 90%;
-    margin: auto;
-}
-.imgBox {
-    width: 60%;
-    height: 30%;
-    margin: auto;
-    vertical-align: top;
-    object-position: center;
+    display: flex;
     justify-content: center;
-}
-.posted-art{
-    width: 100%;
-    height: 100%;
-    margin: 20px;
-}
-.art-desc{
-    margin: auto;
-    position:relative;
-    display:block;
-    width: 70%;
-    text-align: center;
-}
-.art-content{
-    margin-left: 3%;
+    align-items: center;
+    flex-wrap: wrap;
 }
 
+.art-desc{
+    margin-left: 50px;
+    margin-top: none;
+}
 .title{
     margin-top: 10px;
 }
@@ -328,26 +311,16 @@ body {
     margin-top: 10px;
 }
 .desc{
-    margin: auto;
+    margin-top: 20px;
+    width: 400px;
+    justify-content: center;
     text-align: justify;
-    width: 600px;
 }
-.tags{
-    margin-bottom: 20px;
-}
-.genres{
-    text-align: center;
-    margin-top: 0;
-    margin-left: 20px;
-}
-.btn-profile-view{
-    border: none;
-    border-radius: 5px;
-    background-color: #70b8df;
-    height: 40px;
-}
-.btn-profile-view:hover{
-    background-color: #7AC9F5;
+
+.posted-art{
+    width: 900px;
+    height: 700px;
+    object-fit: cover;
 }
 /* Indiv-art end */
 /* About-us */
@@ -456,12 +429,13 @@ body {
     background-color: #70b8df;
 }
 /* ProfileSearch */
-.artist-profiles{
+.artist-profiles {
     display: flex;
     margin-left: 100px;
     padding-top: 70px;
 }
-.this-card{
+
+.this-card {
     transition: 0.4s;
     width: 300px;
     background: #fff;
@@ -472,18 +446,20 @@ body {
     margin: 10px;
     height: 300px;
     border-radius: 5px;
-    border:#141414;
-}
-.this-card:hover{
-    box-shadow:0 8px 16px 0 rgba(0,0,0,0.6);
-}
-.this-card img{
-    border-radius: 5px;
-}
-.card-container{
-    padding: 30px 16px;
+    border: #141414;
 }
 
+    .this-card:hover {
+        box-shadow: 0 8px 16px 0 rgba(0,0,0,0.6);
+    }
+
+    .this-card img {
+        border-radius: 5px;
+    }
+
+.card-container {
+    padding: 30px 16px;
+}
 
 /*light mode toggle*/
 label.active{
@@ -518,15 +494,18 @@ body.active{
     background-color: beige;
 
 }
-.art-desc.active{
-    color: black;
-}
+
 .container-zzz.active{
     background-color: beige;
 }
 .container-about.active{
     background: #f5f5f5;
 
+}
+
+.menu-list.active a.active{
+    color:black;
+    background: none;
 }
 
 @media only screen and (max-width: 940px){

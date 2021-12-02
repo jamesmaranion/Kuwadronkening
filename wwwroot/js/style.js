@@ -22,7 +22,7 @@ arrows.forEach((arrow, i) => {
 //Nav bar
 const ball = document.querySelector(".toggle-ball");
 const items = document.querySelectorAll(
-    ".art-desc, a,.menu-list,.container-xxx,.art-list-title,.navbar-container,.logo,.toggle,.container-zzz,body");
+    "a,.menu-list,.container-xxx,.art-list-title,.navbar-container,.logo,.toggle,.container-zzz,body");
 
 ball.addEventListener("click",()=>{
     items.forEach(item=>{

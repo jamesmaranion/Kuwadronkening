@@ -8,7 +8,6 @@ namespace Kuwadro.Models
 {
     public class Art
     {
-        public Profile prof = new Profile();
         [Key]
         public int Id { get; set; }
         public string Image { get; set; }
