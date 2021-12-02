@@ -36,7 +36,7 @@
                         </div><br>
                         <div class="input-container">
                             <label asp-for="Genre">Genre</label><br>
-                            <input asp-for="Genre" type="text" />
+                            <select asp-for="Genre" class="form-control" asp-items="Html.GetEnumSelectList<Genres>()"></select>
                             <span asp-validation-for="Genre" class="text-danger"></span>
                         </div>
                         <button type="submit" value="Upload" class="upload">Upload</button>
