@@ -10,22 +10,6 @@
 
 <head>
     <link rel="stylesheet" href="~/css/profile-design.css" />
-    @*@{var thisUser = await UserManager.GetUserAsync(User);
-        if (thisUser.Background != null)
-        {
-        <style>
-            .profile {
-                display: block;
-                height: 50vh;
-                padding: 50px;
-                background: url('~/wwwroot/pfp/coverPic/thicc mage.gif');
-                background-position: center center;
-                background-repeat: no-repeat;
-                background-size: auto;
-            }
-        </style>
-        } 
-        }*@
         </head>
 <body>
     <div class=container>
@@ -51,7 +35,7 @@
                         }
                         else
                         {
-                            <img class="profile-picture" src="~/pfp/profilePic/default pfp.png">
+                            <img class="profile-picture" src="~/pfp/profilePic/defaultPfp.png">
                             <div class="Prof-pic pictoverlay-blur">
                                 <a asp-action="UploadProfile" class="imglink">Edit Profile</a>
                             </div>

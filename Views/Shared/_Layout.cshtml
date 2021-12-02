@@ -53,31 +53,31 @@
                         }
                         else
                         {
-                            <img class="profile-pic" src="~/pfp/profilePic/default pfp.png" alt="">
+                            <img class="profile-picture" src="~/pfp/profilePic/defaultPfp.png">
                         }
                     }
                     else
                     {
-                        <img class="profile-pic" src="~/pfp/profilePic/default pfp.png" alt="">
+                        <img class="profile-picture" src="~/pfp/profilePic/defaultPfp.png">
                     }
 
-                <div class="profile-text">
-                    @if (SignInManager.IsSignedIn(User))
-                    {
-                        var currentUser = await UserManager.GetUserAsync(User);
-                        
-                        <div class="dropdown">
-                            <span class="prof-txt">@(currentUser.UserName)</span>
-                            <div class="dropdown-content">
-                                <a  asp-controller="Profile" asp-action="Profile">Profile</a>
-                                <a onclick="location.href='@Url.Action("Logout", "Home")'">Logout</a>
+                    <div class="profile-text">
+                        @if (SignInManager.IsSignedIn(User))
+                        {
+                            var currentUser = await UserManager.GetUserAsync(User);
+
+                            <div class="dropdown">
+                                <span class="prof-txt">@(currentUser.UserName)</span>
+                                <div class="dropdown-content">
+                                    <a asp-controller="Profile" asp-action="Profile">Profile</a>
+                                    <a onclick="location.href='@Url.Action("Logout", "Home")'">Logout</a>
+                                </div>
                             </div>
-                        </div>
-                    }
-                    else
-                    {
-                        <button class="sign-up" onclick="location.href='Identity/Account/Register'">Sign-Up</button>
-                    }
+                        }
+                        else
+                        {
+                            <button class="sign-up" onclick="location.href='Identity/Account/Register'">Sign-Up</button>
+                        }
 
                     </div>
                     <div class="toggle">

@@ -10,7 +10,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 </head>
 
-<div>
+@*<div>
 
 </div>
 <div class="container-xxx">
@@ -35,5 +35,47 @@
             </div>
         </div>
     </div>
+</div>*@
+
+
+<div class="container-zzz">
+    <div class="indiv-art">
+        <div class="art-info">
+            <div class="imgBox">
+                <img src="~/img/ArtWorks/@(Model.Image)" class="posted-art">
+            </div>
+            <div class="art-desc">
+                <div class="art-content">
+                    <h2 class="title">@(Model.Title)</h2>
+                    <h3 class="author">By <a href="@Url.ActionLink("Index", "Profile", new { id = Model.User.UserName })"> @(Model.User.UserName)</a></h3>
+                    <div class="tags">
+                        <span class="badge rounded-pill bg-primary">@Model.Genre</span>
+                    </div>
+                    <div class="desc">
+                        <p>
+                            @(Model.Description)
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="art-list-container">
+        <h1 class="art-list-title">More from Artist</h1>
+        <button class="btn-profile-view">View Profile</button>
+        <div class="art-list-wrapper">
+            <div class="art-list">
+                @foreach (var item in Model.prof.ArtList.OrderBy(p => p.CreationDate).ToList())
+                {
+                    <div class="art-list-item">
+                        <img class="art-list-item-img" src="~/img/ArtWorks/@(item.Image)" alt="">
+                        <span class="art-list-item-title">@(item.Title)</span>
+                        <a href="@Url.ActionLink("Artwork", "Profile", new { id = @item.Id }) " class="art-list-item-btn"><p class="art-list-item-btn-txt">Open Artwork</p></a>
+                    </div>
+                }
+            </div>
+            <i class="fas fa-chevron-right arrow" id="right-arrow"></i>
+        </div>
+    </div>
 </div>
-<script src="indiv.js"></script>
+<script src="~/js/style.js"></script>
