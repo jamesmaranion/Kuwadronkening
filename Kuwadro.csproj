@@ -23,6 +23,7 @@
   <ItemGroup>
     <Folder Include="wwwroot\img\ArtWorks\" />
     <Folder Include="wwwroot\pfp\coverPic\" />
+    <Folder Include="wwwroot\pfp\profilePic\" />
   </ItemGroup>
 
 </Project>

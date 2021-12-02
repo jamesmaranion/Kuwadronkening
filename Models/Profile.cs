@@ -11,5 +11,6 @@ namespace Kuwadro.Models
     {
         public ApplicationUser User { get; set; }
         public List<Art> ArtList { get; set; }
+        
     }
 }
