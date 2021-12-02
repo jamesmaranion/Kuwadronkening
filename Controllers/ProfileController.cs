@@ -225,7 +225,7 @@ namespace Kuwadro.Controllers
         [HttpPost]
         public IActionResult Commission(Commission record)
         {
-
+         
             MailMessage mail = new MailMessage()
             {
                 From = new MailAddress("muertosfestivel@gmail.com", "bruh")
