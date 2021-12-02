@@ -4,7 +4,7 @@
 
 <div class="container-xxx">
     <div class="content-container">
-        @foreach (IGrouping<String, Art> group in Model)
+        @foreach (IGrouping<Genres, Art> group in Model)
         {
             <div class="art-list-container">
                 <h1 class="art-list-title">@group.Key</h1>

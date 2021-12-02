@@ -21,10 +21,24 @@ namespace Kuwadro.Models
 
 
 
-        public string Genre { get; set; }
+        public Genres Genre { get; set; }
 
         public bool Featured { get; set; }
         public bool Recommended { get; set; }
         public bool Popular { get; set; }
+    }
+
+    public enum Genres
+    {
+        Anime = 1,
+        Modernism = 2,
+        History = 3, 
+        Fantasy = 4, 
+        Abstract = 5,
+        Expressionism = 6,
+        Horror = 7,
+        Science = 8,
+        Supernatural = 9,
+        Comic = 10,
     }
 }
