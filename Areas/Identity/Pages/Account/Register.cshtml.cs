@@ -85,7 +85,7 @@ namespace Kuwadro.Areas.Identity.Pages.Account
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = Input.UserName, Email = Input.Email, Background = "default.gif", ProfilePicture = "default.jpg", Bio = "This person apparently exists",
+                var user = new ApplicationUser { UserName = Input.UserName, Email = Input.Email, Background = "default.gif", ProfilePicture = "default.jpg", Bio = "This person apparently exists", About = "Not Much Actually"
                     EmailConfirmed = true};
 
                 var result = await _userManager.CreateAsync(user, Input.Password);
