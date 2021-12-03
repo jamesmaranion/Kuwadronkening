@@ -90,7 +90,7 @@
                         {
                             
                             <div class="art-list-item">
-                                <img class="art-list-item-img" src="~/img/ArtWorks/@(item.ProfilePicture)" alt="">
+                                <img class="art-list-item-img" src="~/pfp/coverPic/@(item.Background)" alt="">
                                 <span class="art-list-item-title">@(item.UserName)</span>
                                 <a href="@Url.ActionLink("Index", "Profile", new { id= @item.UserName })" class="art-list-item-btn">View More</a>
                             </div>

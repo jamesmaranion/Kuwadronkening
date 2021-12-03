@@ -3,34 +3,18 @@
 @{var currentUser = Model.User;
 
     <div class="profile">
-        @if (currentUser.Background != null)
-        {
-            <img class="background-c" src="~/pfp/coverPic/@(currentUser.Background)">
-        }
+ 
+        <img class="background-c" src="~/pfp/coverPic/@(currentUser.Background)">
 
         <div class="profile-content">
+            <img class="profile-picture" src="~/pfp/profilePic/@(currentUser.ProfilePicture)">
+            <div class="Prof-pic pictoverlay-blur">
+            </div>
+            <p class="profile-about">@currentUser.Bio</p>
 
-            @if (currentUser.ProfilePicture != null)
-            {
-                <img class="profile-picture" src="~/pfp/profilePic/@(currentUser.ProfilePicture)">
-                <div class="Prof-pic pictoverlay-blur">
-                </div>
-            }
-            else
-            {
-                <img class="profile-picture" src="~/pfp/profilePic/default pfp.png">
-                <div class="Prof-pic pictoverlay-blur">
-                </div>
-            }
+        
             <p class="profile-name">@(currentUser.UserName)</p>
-            @if (currentUser.Bio != null)
-            {
-                <p class="profile-about">@currentUser.Bio</p>
-            }
-            else
-            {
-                <p class="profile-about">This person apparently exists</p>
-            }
+           
         </div>
     </div>
 }

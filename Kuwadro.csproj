@@ -22,7 +22,6 @@
 
   <ItemGroup>
     <Folder Include="wwwroot\img\ArtWorks\" />
-    <Folder Include="wwwroot\pfp\coverPic\" />
   </ItemGroup>
 
 </Project>

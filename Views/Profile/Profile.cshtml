@@ -24,21 +24,23 @@
                 background-size: auto;
             }
         </style>
-        } 
+        }
         }*@
-        </head>
+</head>
 <body>
     <div class=container>
         @{var currentUser = await UserManager.GetUserAsync(User);
-          
-                <div class="profile">
+
+            <div class="profile">
+                @if (currentUser != null)
+                {
                     @if (currentUser.Background != null)
                     {
                         <img class="background-c" src="~/pfp/coverPic/@(currentUser.Background)">
                     }
                     else
                     {
-                        
+
                     }
                     <div class="profile-content">
 
@@ -66,16 +68,17 @@
                             <p class="profile-about"></p>
                         }
                     </div>
-                </div>
-            }
-           
-        <ul class="second-navbar-list">
-    <li><a href="@Url.ActionLink("Index", "Profile" , new { id= currentUser.UserName })">Gallery</a></li>
-    <li><a href="">Reviews</a></li>
+                }
+            </div>
+        }
 
-    <li><a href="@Url.ActionLink("About", "Profile" , new { id= currentUser.UserName })">About</a></li>
-    <li><a href="@Url.ActionLink("Commission", "Profile" , new { id= currentUser.UserName })">Commissions</a></li>
-</ul>
+        <ul class="second-navbar-list">
+            <li><a href="@Url.ActionLink("Index", "Profile" , new { id= currentUser.UserName })">Gallery</a></li>
+            <li><a href="">Reviews</a></li>
+
+            <li><a href="@Url.ActionLink("About", "Profile" , new { id= currentUser.UserName })">About</a></li>
+            <li><a href="@Url.ActionLink("Commission", "Profile" , new { id= currentUser.UserName })">Commissions</a></li>
+        </ul>
         <div class="Gallery">
             @foreach (var item in Model.ArtList.OrderBy(p => p.CreationDate).ToList())
             {

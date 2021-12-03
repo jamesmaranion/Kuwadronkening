@@ -85,13 +85,14 @@ namespace Kuwadro.Areas.Identity.Pages.Account
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = Input.UserName, Email = Input.Email, Background = "yellow", ProfilePicture = "default", Bio = "yelow",
+                var user = new ApplicationUser { UserName = Input.UserName, Email = Input.Email, Background = "default.gif", ProfilePicture = "default.jpg", Bio = "This person apparently exists",
                     EmailConfirmed = true};
 
                 var result = await _userManager.CreateAsync(user, Input.Password);
                 if (result.Succeeded)
                 {
                     _logger.LogInformation("User created a new account with password.");
+                   
 
                     var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
                     code = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(code));
