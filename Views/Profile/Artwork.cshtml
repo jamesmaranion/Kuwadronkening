@@ -31,24 +31,9 @@
                         @(Model.Description)
                     </p>
                 </div>
+                <button onclick="window.print()" class="some-btn">Print</button>
 
             </div>
-        </div>
-    </div>
-    <div class="art-list-container">
-        <h1 class="art-list-title">More from Artist</h1>
-        <a href="@Url.ActionLink("Index", "Profile", new { id = Model.User.UserName })" class="btn-profile-view">View More</a>
-        <div class="art-list-wrapper">
-
-            <div class="art-list">
-                <div class="art-list-item">
-                    <img class="art-list-item-img" src="css/images/img-2.jpg" alt="">
-                    <span class="art-list-item-title">This art</span>
-                    <button class="art-list-item-btn">View More</button>
-                </div>
-
-            </div>
-
         </div>
     </div>
 </div>
