@@ -25,14 +25,18 @@
             <div class="title">
                 Login
                 <hr>
+                <div asp-validation-summary="All" class="valid"></div>
             </div>
             <div class="input_field">
                 <label asp-for="Input.UserName">Username</label><br>
-                <input asp-for="Input.UserName" type="text" placeholder="Username"><br>
+                <input asp-for="Input.UserName" type="text" placeholder="Username" id="User"><br>
+                <span asp-validation-for="Input.UserName"></span>
+         
             </div>
             <div class="input_field">
                 <label asp-for="Input.Password">Password</label><br>
                 <input asp-for="Input.Password" type="password" placeholder="Password"><br>
+                <span asp-validation-for="Input.Password"></span>
             </div>
             <button type="submit" class="btn-log">Login</button>
     </form>
@@ -43,3 +47,7 @@
     <a id="forgot-password" asp-page="./ForgotPassword">Forgot your password?</a>
     </div>
 </body>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

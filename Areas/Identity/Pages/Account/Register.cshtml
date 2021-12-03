@@ -27,19 +27,23 @@
             <div class="input_field">
                 <label asp-for="Input.Email">Email</label><br>
                 <input asp-for="Input.Email" type="email" placeholder="Email"><br>
+                <span asp-validation-for="Input.Email"></span>
             </div>
             <div class="input_field">
                 <label asp-for="Input.UserName">Username</label><br>
                 <input asp-for="Input.UserName" type="text" placeholder="Username"><br>
+                <span asp-validation-for="Input.UserName"></span>
             </div>
             <div class="input_field">
                 <label asp-for="Input.Password">Password</label><br>
                 <input asp-for="Input.Password" type="password" placeholder="Password"><br>
+                <span asp-validation-for="Input.Password"></span>
             </div>
             <div class="input_field">
 
                 <label asp-for="Input.ConfirmPassword">Re-Type Password</label><br>
                 <input asp-for="Input.ConfirmPassword" type="password" placeholder="Re-Type Password"><br>
+                <span asp-validation-for="Input.ConfirmPassword"></span>
             </div>
             <button type="submit" class="btn-reg">Register</button>
     </form>
@@ -49,3 +53,7 @@
     <button type="submit" asp-page="./Login" class="btn-log">Login</button>
     </div>
 </body>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

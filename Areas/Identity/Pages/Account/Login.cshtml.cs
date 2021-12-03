@@ -45,10 +45,13 @@ namespace Kuwadro.Areas.Identity.Pages.Account
         {
             [Required]
             [DataType(DataType.Text)]
+    
+            
             public string UserName { get; set; }
 
             [Required]
             [DataType(DataType.Password)]
+  
             public string Password { get; set; }
 
             [Display(Name = "Remember me?")]

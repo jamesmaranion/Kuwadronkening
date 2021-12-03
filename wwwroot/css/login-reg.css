@@ -15,7 +15,10 @@ body{
     font-size: 22px;
 }
 
+.valid{
+    font-size: 15px;
 
+}
 .reg-form{
     max-width: 350px;
     width: 100%;
