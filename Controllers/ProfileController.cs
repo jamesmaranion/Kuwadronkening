@@ -185,7 +185,7 @@ namespace Kuwadro.Controllers
 
             //var canEdit = art.UserId == userId;
 
-            return art != null ? NotFound() : View(art);
+            return art == null ? NotFound() : View(art);
         }
 
         [AllowAnonymous]
