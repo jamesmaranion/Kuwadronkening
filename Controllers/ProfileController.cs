@@ -23,7 +23,7 @@ namespace Kuwadro.Controllers
     public class ProfileController : Controller
     {
         private readonly ApplicationDbContext _context;
-        private readonly SignInManager<ApplicationUser>  _signInManager;
+        private readonly SignInManager<ApplicationUser> _signInManager;
 
         public ProfileController(ApplicationDbContext context, SignInManager<ApplicationUser> signInManager)
         {
@@ -31,7 +31,7 @@ namespace Kuwadro.Controllers
             _signInManager = signInManager;
         }
 
-    
+
 
         public IActionResult UploadArt()
         {
@@ -42,7 +42,7 @@ namespace Kuwadro.Controllers
 
         public IActionResult Index(String id)
         {
-        
+
             var User = _context.Users.Where(u => u.UserName == id).FirstOrDefault();
 
             if (User == null)
@@ -112,7 +112,7 @@ namespace Kuwadro.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
- 
+
         public IActionResult UploadProfile(ApplicationUser profile, IFormFile ProfilePicture, IFormFile Background)
         {
             System.Diagnostics.Debug.WriteLine(ProfilePicture);
@@ -120,7 +120,7 @@ namespace Kuwadro.Controllers
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
             var user = _context.Users.Where(u => u.Id == userId).SingleOrDefault();
 
-            
+
 
             if (ProfilePicture != null)
             {
@@ -142,7 +142,7 @@ namespace Kuwadro.Controllers
             if (Background != null)
             {
                 if (Background.Length > 0)
-                {       
+                {
                     user.Background = profile.Background;
 
 
@@ -169,7 +169,7 @@ namespace Kuwadro.Controllers
 
             _context.Users.Update(user);
             _context.SaveChanges();
-            return RedirectToAction("Index", new { id = user.UserName});
+            return RedirectToAction("Index", new { id = user.UserName });
         }
 
 
@@ -184,32 +184,36 @@ namespace Kuwadro.Controllers
             //var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
 
             //var canEdit = art.UserId == userId;
-            
-            return View(art);
+
+            return art != null ? NotFound() : View(art);
         }
 
         [AllowAnonymous]
-        public IActionResult About(String id)
+        public IActionResult About(string id)
         {
             var User = _context.Users.Where(u => u.UserName == id).FirstOrDefault();
-            return User == null? NotFound(): View(new Profile { User = User});
+            return User == null ? NotFound() : View(new Profile { User = User });
         }
 
         [AllowAnonymous]
-        public IActionResult Commission(String id)
+        public IActionResult Commission(string id)
         {
             return View();
         }
 
         [HttpPost]
-        public IActionResult Commission(Commission record)
+        public IActionResult Commission(string id, Commission record)
         {
-         
+            ApplicationUser user = _context.Users.Where(u => u.UserName == id).FirstOrDefault();
+            if (user == null) return View();
+            string email = user.Email;
+
+
             MailMessage mail = new MailMessage()
             {
                 From = new MailAddress("muertosfestivel@gmail.com", "bruh")
             };
-            mail.To.Add(record.Email);
+            mail.To.Add(email);
 
             mail.Subject = $"art request";
             mail.Body = record.Description;
@@ -227,7 +231,7 @@ namespace Kuwadro.Controllers
             return View();
         }
 
-        
+
 
     }
 }
