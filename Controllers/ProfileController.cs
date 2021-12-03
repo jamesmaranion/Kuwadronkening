@@ -169,7 +169,7 @@ namespace Kuwadro.Controllers
 
             _context.Users.Update(user);
             _context.SaveChanges();
-            return RedirectToAction("Profile");
+            return RedirectToAction("Index", new { id = user.UserName});
         }
 
 
