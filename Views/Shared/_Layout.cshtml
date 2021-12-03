@@ -69,7 +69,9 @@
                         <div class="dropdown">
                             <span class="prof-txt">@(currentUser.UserName)</span>
                             <div class="dropdown-content">
-                                <a  asp-controller="Profile" asp-action="Profile">Profile</a>
+                                <a asp-controller="Profile"  asp-route-id="@currentUser.UserName">Profile</a>
+
+                                <a asp-controller="Profile" asp-action="UploadProfile" asp-route-id="@currentUser.UserName">Edit Profile</a>
                                 <a onclick="location.href='@Url.Action("Logout", "Home")'">Logout</a>
                             </div>
                         </div>

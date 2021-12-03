@@ -31,11 +31,7 @@ namespace Kuwadro.Controllers
             _signInManager = signInManager;
         }
 
-        public async Task<IActionResult> ProfilePage()
-        {
-            return View(await _context.artList.ToListAsync());
-        }
-
+    
 
         public IActionResult UploadArt()
         {
@@ -175,25 +171,8 @@ namespace Kuwadro.Controllers
             _context.SaveChanges();
             return RedirectToAction("Profile");
         }
-        public IActionResult EditProfile()
-        {
-            return View();
-        }
 
-      
-        public IActionResult Profile()
-        {
-            var Users = User.FindFirstValue(ClaimTypes.NameIdentifier);
 
-            var Arts = _context.artList.Where(p => p.UserId == Users)
-                      .ToList();
-
-            var artworks = new Profile()
-            {
-                ArtList = Arts
-            };
-            return View(artworks);
-        }
 
 
         [AllowAnonymous]

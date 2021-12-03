@@ -9,6 +9,8 @@ using Kuwadro.Data;
 using Kuwadro.Models;
 using System.Security.Claims;
 
+//was suppossed to refactor profile and add this controller but  ran out of time
+
 namespace Kuwadro.Controllers
 {
     public class ArtsController : Controller
@@ -19,6 +21,7 @@ namespace Kuwadro.Controllers
         {
             _context = context;
         }
+        
 
         // GET: Arts
         public  IActionResult Index(int id)
