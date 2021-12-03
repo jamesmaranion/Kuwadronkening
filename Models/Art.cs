@@ -10,7 +10,8 @@ namespace Kuwadro.Models
     {
         [Key]
         public int Id { get; set; }
-        [Required]     
+
+        [StringLength(30, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 1)]
         public string Image { get; set; }
 
        
