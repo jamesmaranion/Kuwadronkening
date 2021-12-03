@@ -513,9 +513,10 @@ body {
     font-size: 16px;
     float: left;
     margin: 10px;
-    height: 300px;
+    height: 450px;
     border-radius: 5px;
     border: #141414;
+    border-width: thin;
 }
 
     .this-card:hover {
@@ -523,7 +524,7 @@ body {
     }
 
     .this-card img {
-        border-radius: 5px;
+        border-radius: 0px;
     }
 
 .card-container {

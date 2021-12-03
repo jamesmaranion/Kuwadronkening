@@ -149,6 +149,7 @@ color: white;
     top: 50px;
     left: 0px;
     position: absolute;
+    object-fit: cover;
     display: block;
     height: 61vh;
     width: 100%;
