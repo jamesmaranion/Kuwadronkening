@@ -33,7 +33,7 @@
                 </div>
             </div>
             <div class="art-list-container">
-                <h1 class="art-list-title">FEATURED ART</h1>
+                <h1 class="art-list-title">RECENT ART</h1>
                 <div class="art-list-wrapper">
                     <div class="art-list">
                         @foreach (var item in Model.FeaturedArt.OrderBy(p => p.CreationDate).ToList())
@@ -49,39 +49,7 @@
                     <i class="fas fa-chevron-right arrow" id="right-arrow"></i>
                 </div>
             </div>
-            <div class="art-list-container">
-                <h1 class="art-list-title">RECOMMENDED ART</h1>
-                <div class="art-list-wrapper">
-                    <div class="art-list">
-                        @foreach (var item in Model.RecommendedArt.OrderBy(p => p.CreationDate).ToList())
-                        {
-                            <div class="art-list-item">
-                                <img class="art-list-item-img" src="~/img/ArtWorks/@(item.Image)" alt="">
-                                <span class="art-list-item-title">@(item.Title)</span>
-                                <a href="@Url.ActionLink("Artwork", "Profile", new { id = @item.Id }) " class="art-list-item-btn"><p class="art-list-item-btn-txt">Open Artwork</p></a>
-
-                            </div>
-                        }
-                    </div>
-                    <i class="fas fa-chevron-right arrow" id="right-arrow"></i>
-                </div>
-            </div>
-            <div class="art-list-container">
-                <h1 class="art-list-title">POPULAR ART</h1>
-                <div class="art-list-wrapper">
-                    <div class="art-list">
-                        @foreach (var item in Model.PopularArt.OrderBy(p => p.CreationDate).ToList())
-                        {
-                            <div class="art-list-item">
-                                <img class="art-list-item-img" src="~/img/ArtWorks/@(item.Image)" alt="">
-                                <span class="art-list-item-title">@(item.Title)</span>
-                                <a href="@Url.ActionLink("Artwork", "Profile", new { id = @item.Id }) " class="art-list-item-btn"><p class="art-list-item-btn-txt">Open Artwork</p></a>
-                            </div>
-                        }
-                    </div>
-                    <i class="fas fa-chevron-right arrow" id="right-arrow"></i>
-                </div>
-            </div>
+           
             <div class="art-list-container">
                 <h1 class="art-list-title">DISCOVER ARTISTS</h1>
                 <div class="art-list-wrapper">
