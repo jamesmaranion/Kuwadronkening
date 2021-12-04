@@ -41,7 +41,7 @@
                             <div class="art-list-item">
                                 <img class="art-list-item-img" src="~/img/ArtWorks/@(item.Image)" alt="">
                                 <span class="art-list-item-title">@(item.Title)</span>
-                                <a href="@Url.ActionLink("Artwork", "Profile", new { id = @item.Id }) " class="art-list-item-btn"><p class="art-list-item-btn-txt">Open Artwork</p></a>
+                                <a href="@Url.ActionLink("Index", "Arts", new { id = @item.Id }) " class="art-list-item-btn"><p class="art-list-item-btn-txt">Open Artwork</p></a>
                             </div>
                         }
 

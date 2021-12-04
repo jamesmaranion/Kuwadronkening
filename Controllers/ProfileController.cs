@@ -180,18 +180,7 @@ namespace Kuwadro.Controllers
 
 
 
-        [AllowAnonymous]
-        public IActionResult Artwork(int id)
-        {
-            var art = _context.artList.Include(p => p.User).Where(p => p.Id == id)
-                .FirstOrDefault();
-            //if id of the user that created it matches the id of the logged in user
-            //var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-
-            //var canEdit = art.UserId == userId;
-
-            return art == null ? NotFound() : View(art);
-        }
+     
 
         [AllowAnonymous]
         public IActionResult About(string id)
