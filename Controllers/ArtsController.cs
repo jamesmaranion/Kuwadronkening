@@ -43,8 +43,32 @@ namespace Kuwadro.Controllers
   
         }
 
-        // GET: Arts/Details/5
+        public  IActionResult Delete(int? id)
+        {
+            if (id == null)
+            {
+                return RedirectToAction("Index");
+            }
+            var art = _context.artList.Where(i => i.Id == id).FirstOrDefault();
+            if (art == null)
+            {
+                return RedirectToAction("Index");
+            }
+            string userId = art.UserId;
+            ApplicationUser user = _context.Users.Where(i => i.Id == userId).FirstOrDefault();
+            //next time make this required in the model
+            if (user == null)
+            {
+                //this code shouldn't be here
+                return BadRequest();
+            }
+            _context.artList.Remove(art);
+            _context.SaveChanges();
 
-        
+            return RedirectToAction("Index", "Profile", new { id = user.UserName });
+
+        }
+
+
     }
 }

@@ -22,9 +22,9 @@
             </div>
             <div class="art-desc">
                 <h2 class="title">@(Model.Art.Title)</h2>
-                @if(Model.CanEdit)
+                @if (Model.CanEdit)
                 {
-                    <a href="@Url.ActionLink("Index", "Profile", new { id = Model.Art.User.UserName })"> Edit </a>
+                    <a href="@Url.ActionLink("Delete", "Arts", new { id = Model.Art.Id })" onclick="return confirm('Are you sure?')"> Delete </a>
 
                 }
                 <h3 class="author">By <a href="@Url.ActionLink("Index", "Profile", new { id = Model.Art.User.UserName })"> @(Model.Art.User.UserName)</a></h3>
@@ -37,6 +37,7 @@
                         @(Model.Art.Description)
                     </p>
                 </div>
+                <button onclick="window.print()" class="some-btn">Print</button>
 
             </div>
         </div>

@@ -20,7 +20,7 @@
                 <div class="featured-title">
                     <h1>Some Art</h1>
                     <p class="feat-desc">GET THE BEST ART IN YOUR LOCATION</p>
-                    <button class="discover">Discover</button>
+                    <button type="button" class="discover" onclick="location.href='/Home/Browse'">Discover</button>
                     @if (SignInManager.IsSignedIn(User))
                     {
                         <button type="button" class="sign-up" onclick="location.href='Profile/UploadArt'">Upload Now!</button>
