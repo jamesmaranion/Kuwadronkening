@@ -65,12 +65,10 @@ namespace Kuwadro.Controllers
 
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
         [Authorize]
         public IActionResult UploadArt(Art art, IFormFile Image)
         {
-            if (ModelState.IsValid)
-            {
+          
                 System.Diagnostics.Debug.WriteLine(Image);
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
             var user = _context.Users.Where(u => u.Id == userId).SingleOrDefault();
@@ -99,6 +97,8 @@ namespace Kuwadro.Controllers
                         artwork.Image = Image.FileName;
                     }
                 }
+            if (ModelState.IsValid)
+            {
                 art.UserId = userId;
                 art.User = user;
                 _context.artList.Add(artwork);

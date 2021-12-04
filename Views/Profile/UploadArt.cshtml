@@ -19,11 +19,11 @@
             <div class="upload-container">
                 <div class="upload-form">
                     <form asp-action="UploadArt" enctype="multipart/form-data">
-                        <div asp-validation-summary="All"  class="valid"></div>
+
                         <div class="input-container">
                             <label asp-for="Image">Upload Artwork</label><br>
-                            <input asp-for="Image" class="form-control" type="file" accept="image/*" /><br>
-                            <span asp-validation-for="Image"  class="valid"></span>
+                            <input asp-for="Image" class="form-control" type="file" accept="image/*" required /><br>
+                            <span asp-validation-for="Image" class="valid"></span>
                         </div><br>
                         <div class="input-container">
                             <label asp-for="Title">Title</label><br>
@@ -33,12 +33,12 @@
                         <div class="input-container">
                             <label asp-for="Description">Description</label><br>
                             <textarea asp-for="Description" class="form-control" rows="4" cols="50"></textarea><br>
-                            <span asp-validation-for="Description"  class="valid"></span>
+                            <span asp-validation-for="Description" class="valid"></span>
                         </div><br>
                         <div class="input-container">
                             <label asp-for="Genre">Genre</label><br>
                             <select asp-for="Genre" class="form-control" asp-items="Html.GetEnumSelectList<Genres>()"></select><br>
-                            <span asp-validation-for="Genre"  class="valid"></span>
+                            <span asp-validation-for="Genre" class="valid"></span>
                         </div>
                         <button type="submit" value="Upload" class="upload">Upload</button>
                     </form>
@@ -53,6 +53,11 @@ else
     <h1>Please Create an Account to continue</h1>
 
 }
+
+<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.2.0.min.js"></script>
+
+<script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.16.0/jquery.validate.min.js"></script>
+<script src="https://ajax.aspnetcdn.com/ajax/jquery.validation.unobtrusive/3.2.6/jquery.validate.unobtrusive.min.js"></script>
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
