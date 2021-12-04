@@ -32,21 +32,15 @@ namespace Kuwadro.Controllers
 
         public IActionResult Index()
         {
-            var Featured = _context.artList.OrderBy(p => p.CreationDate).Where(p => p.Featured == true)
+            var Featured = _context.artList.OrderBy(p => p.CreationDate).Take(10)
                    .ToList();
 
-            var Recommended = _context.artList.OrderBy(p => p.CreationDate).Where(p => p.Recommended == true)
-                    .ToList();
-            var Popular = _context.artList.OrderBy(p => p.CreationDate).Where(p => p.Popular == true)
-                   .ToList();
-            var Discover = _context.Users.OrderBy(p => p.Id)
+            var Discover = _context.Users.OrderBy(p => p.Id).Take(10)
                    .ToList();
 
             var artworks = new HomeArt()
             {
                 FeaturedArt = Featured,
-                RecommendedArt = Recommended,
-                PopularArt = Popular,
                 DiscoverArtist = Discover
 
             };
@@ -57,7 +51,7 @@ namespace Kuwadro.Controllers
         public IActionResult Search(String q)
         {
             ViewData["Title"] = q;
-            return View(_context.Users.Where(u => u.UserName.Contains(q)).OrderBy(u => u.UserName).ToList<ApplicationUser>());
+            return View(_context.Users.Where(u => u.UserName.Contains(q)).OrderBy(u => u.UserName).ToList<ApplicationUser>());  
         }
 
         public IActionResult Browse()
